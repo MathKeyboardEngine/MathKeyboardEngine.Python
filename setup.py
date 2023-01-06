@@ -19,7 +19,8 @@ setup(
     author_email="symbolinker@gmail.com",
     license="ISC",
     classifiers=[
-        "License :: ISC License",
+        "Development Status :: 3 - Alpha",
+        "License :: OSI Approved :: ISC License (ISCL)",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",

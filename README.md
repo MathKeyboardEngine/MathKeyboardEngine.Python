@@ -36,7 +36,7 @@ Live examples can be tested at [MathKeyboardEngine.GitHub.io](https://mathkeyboa
 
 ## How to use this library
 
-todo
+PyPi link: [https://pypi.org/project/mathkeyboardengine](https://pypi.org/project/mathkeyboardengine/)
 
 
 ## Documentation
