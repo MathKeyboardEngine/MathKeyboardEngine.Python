@@ -38,6 +38,10 @@ Live examples can be tested at [MathKeyboardEngine.GitHub.io](https://mathkeyboa
 
 PyPi link: [https://pypi.org/project/mathkeyboardengine](https://pypi.org/project/mathkeyboardengine/)
 
+For installing a specific version, for example `0.1.0-alpha.11`, run the following command in the Visual Studio Code Terminal:
+```
+py -m pip install mathkeyboardengine==0.1.0a11
+```
 
 ## Documentation
 
