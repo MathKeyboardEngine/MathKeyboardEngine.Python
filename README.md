@@ -36,11 +36,30 @@ Live examples can be tested at [MathKeyboardEngine.GitHub.io](https://mathkeyboa
 
 ## How to use this library
 
-PyPi link: [https://pypi.org/project/mathkeyboardengine](https://pypi.org/project/mathkeyboardengine/)
+This library has been distributed via [PyPi](https://pypi.org/project/mathkeyboardengine/).
 
-For installing a specific version, for example `0.1.0-alpha.11`, run the following command in the Visual Studio Code Terminal:
+Install [Python](https://www.python.org/downloads/) and [VS Code](https://code.visualstudio.com).
+
+For installing a specific version - for example `0.1.0-alpha.11` - run the following command in the `VS Code` Terminal:
 ```
 py -m pip install mathkeyboardengine==0.1.0a11
+```
+Then create a new folder 'MathKeyboardEngineTest' and open it in `VS Code`. Add a file `main.py` with the following content:
+```
+from mathkeyboardengine import KeyboardMemory, LatexConfiguration, getEditModeLatex, AscendingBranchingNode, DigitNode, insert, insertWithEncapsulateCurrent, StandardLeafNode
+
+k = KeyboardMemory()
+latexConfiguration = LatexConfiguration()
+
+insert(k, DigitNode('2'))
+insertWithEncapsulateCurrent(k, AscendingBranchingNode('', '^{', '}'))
+insert(k, StandardLeafNode('x'))
+
+print(getEditModeLatex(k, latexConfiguration))
+```
+Press the play button in the upper-right corner of `VS Code`. The result that is displayed in the Terminal:
+```
+2^{x\blacksquare}
 ```
 
 ## Documentation
