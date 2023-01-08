@@ -3,8 +3,8 @@ from src.LatexConfiguration import LatexConfiguration
 from src.SyntaxTreeComponents.Placeholder.Placeholder import Placeholder
 from src.SyntaxTreeComponents.Nodes.Base.TreeNode import TreeNode
 from src.KeyboardMemory import KeyboardMemory
-from src.getEditModeLatex import getEditModeLatex
-from src.getViewModeLatex import getViewModeLatex
+from src.GetLatex.getEditModeLatex import getEditModeLatex
+from src.GetLatex.getViewModeLatex import getViewModeLatex
 from src.SyntaxTreeComponents.Nodes.Base.LeafNode import LeafNode
 from src.SyntaxTreeComponents.Nodes.Base.BranchingNode import BranchingNode
 from src.SyntaxTreeComponents.Nodes.LeafNodes.StandardLeafNode import StandardLeafNode

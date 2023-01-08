@@ -1,6 +1,9 @@
+[![latest release](https://badge.fury.io/py/mathkeyboardengine.svg)](https://badge.fury.io/py/mathkeyboardengine)
+![](https://badgen.net/badge/test%20coverage/100%25/green)
+
 ## MathKeyboardEngine for Python
 
-MathKeyboardEngine for Python provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example ...).
+MathKeyboardEngine for Python provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example [matplotlib.mathtext](https://matplotlib.org/stable/api/mathtext_api.html)).
 
 Also available:
 
@@ -9,7 +12,7 @@ Also available:
 
 #### An execution timeline
 
-todo
+todo. For now, see the JavaScript repo.
 
 #### Let me test it now!
 
@@ -40,9 +43,9 @@ This library has been distributed via [PyPi](https://pypi.org/project/mathkeyboa
 
 Install [Python](https://www.python.org/downloads/) and [VS Code](https://code.visualstudio.com).
 
-For installing a specific version - for example `0.1.0-alpha.11` - run the following command in the `VS Code` Terminal:
+For installing a specific version of mathkeyboardengine - for example `0.1.0-alpha.12` - run the following command in the `VS Code` Terminal:
 ```
-py -m pip install mathkeyboardengine==0.1.0a11
+py -m pip install mathkeyboardengine==0.1.0a12
 ```
 Then create a new folder 'MathKeyboardEngineTest' and open it in `VS Code`. Add a file `main.py` with the following content:
 ```
@@ -64,7 +67,7 @@ Press the play button in the upper-right corner of `VS Code`. The result that is
 
 ## Documentation
 
-todo
+todo. For now, see the JavaScript repo.
 
 ## How to use this repo
 
@@ -74,6 +77,8 @@ Follow these steps to set up (and verify) a development environment for this rep
 1. Open the Terminal in VS Code and run `py -m pip install -U pytest`.
 1. Run all tests via `py -m pytest`.
 1. See code coverage: `py -m pip install pytest-cov` + `py -m pytest --cov=src --cov-report term-missing`.
+1. Run all tests for multiple versions of python and multiple operating systems: `py -m pip install --upgrade nox` + `py -m nox` (this uses [`noxfile.py`](noxfile.py) from the root of the repository).
+1. If you're interested all the release steps, see `disthelper/release_steps.txt`.
 
 ## Ask or contribute
 

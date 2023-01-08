@@ -1,0 +1,38 @@
+== Release steps ==
+
+> save and close all open documents except this one.
+
+> verify that the test coverage is 100%:
+py -m pytest --cov=src --cov-report term-missing
+
+> verify that the tests pass all versions of Python:
+py -m nox
+
+> install if not already done:
+py -m pip install wheel
+py -m pip install twine
+
+> in setup.py, increment the version="0.1.0-alpha.?", then run:
+py setup.py sdist bdist_wheel
+py -m twine check dist/*
+
+> upload to PyPi:
+py -m twine upload dist/*
+
+== Manually testing the release ==
+> create a folder 'Test' and open it in VS Code, then run:
+py -m pip install mathkeyboardengine==0.1.0a12 (Change the version number to the latest version. Running this command twice seems necessary sometimes.)
+
+> create a new file `main.py` with the following content:
+```
+from mathkeyboardengine import concatLatex, LatexConfiguration, Placeholder, TreeNode, KeyboardMemory, getEditModeLatex, getViewModeLatex, LeafNode, BranchingNode, StandardLeafNode, PartOfNumberWithDigits, DecimalSeparatorNode, DigitNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, RoundBracketsNode, MatrixNode, moveRight, moveDown, moveLeft, moveUp, insert, insertWithEncapsulateCurrent, leaveSelectionMode, insertWithEncapsulateSelection, insertWithEncapsulateSelectionAndPrevious, deleteCurrent, deleteSelection, selectLeft, selectRight, inSelectionMode, enterSelectionMode
+
+k = KeyboardMemory()
+latexConfiguration = LatexConfiguration()
+print(getEditModeLatex(k, latexConfiguration))
+```
+> In the upper-right corner of VS Code, click the play button and verify that the Terminal displays `\blacksquare`. If success, all imports are available as they should.
+
+
+
+
