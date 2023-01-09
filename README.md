@@ -49,16 +49,16 @@ py -m pip install mathkeyboardengine==0.1.0a12
 ```
 Then create a new folder 'MathKeyboardEngineTest' and open it in `VS Code`. Add a file `main.py` with the following content:
 ```
-from mathkeyboardengine import KeyboardMemory, LatexConfiguration, getEditModeLatex, AscendingBranchingNode, DigitNode, insert, insertWithEncapsulateCurrent, StandardLeafNode
+from mathkeyboardengine import KeyboardMemory, LatexConfiguration, get_edit_mode_latex, AscendingBranchingNode, DigitNode, insert, insert_with_encapsulate_current, StandardLeafNode
 
 k = KeyboardMemory()
 latexconfiguration = LatexConfiguration()
 
 insert(k, DigitNode('2'))
-insertWithEncapsulateCurrent(k, AscendingBranchingNode('', '^{', '}'))
+insert_with_encapsulate_current(k, AscendingBranchingNode('', '^{', '}'))
 insert(k, StandardLeafNode('x'))
 
-print(getEditModeLatex(k, latexconfiguration))
+print(get_edit_mode_latex(k, latexconfiguration))
 ```
 Press the play button in the upper-right corner of `VS Code`. The result that is displayed in the Terminal:
 ```
@@ -78,7 +78,7 @@ Follow these steps to set up (and verify) a development environment for this rep
 1. Run all tests via<br/>`py -m pytest`.
 1. See code coverage:<br/>`py -m pip install pytest-cov`<br/>`py -m pytest --cov=src --cov-report term-missing`.
 1. Run all tests for multiple versions of python and multiple operating systems:<br/>`py -m pip install --upgrade nox`<br/>`py -m nox` (this uses [`noxfile.py`](noxfile.py) from the root of the repository).
-1. If you're interested all the release steps, see [`disthelper/release_steps.txt`](disthelper/release_steps.txt).
+1. If you're interested all the release steps, see [`_disthelper/release_steps.txt`](_disthelper/release_steps.txt).
 
 ## Ask or contribute
 

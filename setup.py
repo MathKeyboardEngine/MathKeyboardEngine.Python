@@ -2,7 +2,7 @@ import shutil
 from setuptools import setup
 from codecs import open
 from os import path
-from disthelper.flatpack import flatpack
+from _disthelper.flatpack import flatpack
 
 flatpack(src_folder='src', destination_folder='mathkeyboardengine')
 
