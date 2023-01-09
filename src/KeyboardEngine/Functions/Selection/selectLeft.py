@@ -1,6 +1,6 @@
 from src import KeyboardMemory, Placeholder, TreeNode
 from src.helpers.coalesce import coalesce
-from src.Functions.Selection.helpers.setSelectionDiff import setSelectionDiff
+from src.KeyboardEngine.Functions.Selection.helpers.setSelectionDiff import setSelectionDiff
 
 def selectLeft(k: KeyboardMemory) -> None:
   oldDiffWithCurrent = coalesce(k.selectionDiff, 0)

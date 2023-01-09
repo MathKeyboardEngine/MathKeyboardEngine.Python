@@ -1,7 +1,7 @@
 from typing import Union
 from src import BranchingNode, KeyboardMemory, PartOfNumberWithDigits, Placeholder, TreeNode
-from src.Functions.helpers.encapsulateAllPartsOfNumberWithDigitsLeftOfIndex import encapsulateAllPartsOfNumberWithDigitsLeftOfIndex
-from src.Functions.helpers.getFirstNonEmptyOnLeftOf import getFirstNonEmptyOnLeftOf
+from src.KeyboardEngine.Functions.helpers.encapsulateAllPartsOfNumberWithDigitsLeftOfIndex import encapsulateAllPartsOfNumberWithDigitsLeftOfIndex
+from src.KeyboardEngine.Functions.helpers.getFirstNonEmptyOnLeftOf import getFirstNonEmptyOnLeftOf
 from src.helpers.lastOrNone import lastOrNone
 from src.helpers.firstBeforeOrNone import firstBeforeOrNone
 from src.helpers.coalesce import coalesce

@@ -1,5 +1,5 @@
 from src import KeyboardMemory, Placeholder, TreeNode
-from src.Functions.Selection.helpers.setSelectionDiff import setSelectionDiff
+from src.KeyboardEngine.Functions.Selection.helpers.setSelectionDiff import setSelectionDiff
 from src.helpers.coalesce import coalesce
 from src.helpers.firstBeforeOrNone import firstBeforeOrNone
 

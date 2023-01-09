@@ -1,6 +1,6 @@
 from src import KeyboardMemory, BranchingNode, insert, moveRight, PartOfNumberWithDigits, RoundBracketsNode, TreeNode
-from src.Functions.helpers.encapsulate import encapsulate
-from src.Functions.helpers.encapsulateAllPartsOfNumberWithDigitsLeftOfIndex import encapsulateAllPartsOfNumberWithDigitsLeftOfIndex
+from src.KeyboardEngine.Functions.helpers.encapsulate import encapsulate
+from src.KeyboardEngine.Functions.helpers.encapsulateAllPartsOfNumberWithDigitsLeftOfIndex import encapsulateAllPartsOfNumberWithDigitsLeftOfIndex
 from src.helpers.coalesce import coalesce
 from src.helpers.firstAfterOrNone import firstAfterOrNone
 

@@ -1,6 +1,6 @@
 from src import BranchingNode, insertWithEncapsulateCurrent, KeyboardMemory
-from src.Functions.helpers.encapsulate import encapsulate
-from src.Functions.Selection.helpers.popSelection import popSelection
+from src.KeyboardEngine.Functions.helpers.encapsulate import encapsulate
+from src.KeyboardEngine.Functions.Selection.helpers.popSelection import popSelection
 from src.helpers.coalesce import coalesce
 from src.helpers.lastOrNone import lastOrNone
 
