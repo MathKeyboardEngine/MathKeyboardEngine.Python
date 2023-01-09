@@ -48,7 +48,7 @@ For installing a specific version of mathkeyboardengine - for example `0.1.0-alp
 py -m pip install mathkeyboardengine==0.1.0a12
 ```
 Then create a new folder 'MathKeyboardEngineTest' and open it in `VS Code`. Add a file `main.py` with the following content:
-```
+```py
 from mathkeyboardengine import *
 
 k = KeyboardMemory()
