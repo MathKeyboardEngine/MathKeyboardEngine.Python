@@ -2,30 +2,9 @@ import shutil
 from setuptools import setup
 from codecs import open
 from os import path
-import glob
-import os
-collected_modules = []
-temp_dist = 'mathkeyboardengine'
-if os.path.isdir(temp_dist):
-    shutil.rmtree(temp_dist)
-os.mkdir(temp_dist)
-for file in glob.glob('src/**/*.py', recursive=True):
-    fileName = os.path.basename(file)
-    if (fileName != '__init__.py'):
-        with open(file, encoding='utf-8') as srcFile:
-            collected_modules.append(fileName.split('.')[0])
-            with open(path.join(temp_dist, fileName), "x", encoding='utf-8') as distFile:
-                lines = srcFile.read().splitlines()
-                for line in lines:
-                    if (line.startswith('from src')):
-                        modules = line.split(' import ')[-1].split(', ')
-                        for module in modules:
-                            distFile.write('from .' + module + ' import ' + module + '\n')
-                    else:
-                        distFile.write(line + '\n')
+from disthelper.flatpack import flatpack
 
-with open(path.join(temp_dist, '__init__.py'), 'x') as init:
-    init.writelines([('from .' + m + ' import ' + m + '\n') for m in collected_modules])
+flatpack(src_folder='src', destination_folder='mathkeyboardengine')
 
 root_dir = path.abspath(path.dirname(__file__))
 with open(path.join(root_dir, 'README.md'), encoding='utf-8') as f:

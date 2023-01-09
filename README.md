@@ -52,13 +52,13 @@ Then create a new folder 'MathKeyboardEngineTest' and open it in `VS Code`. Add 
 from mathkeyboardengine import KeyboardMemory, LatexConfiguration, getEditModeLatex, AscendingBranchingNode, DigitNode, insert, insertWithEncapsulateCurrent, StandardLeafNode
 
 k = KeyboardMemory()
-latexConfiguration = LatexConfiguration()
+latexconfiguration = LatexConfiguration()
 
 insert(k, DigitNode('2'))
 insertWithEncapsulateCurrent(k, AscendingBranchingNode('', '^{', '}'))
 insert(k, StandardLeafNode('x'))
 
-print(getEditModeLatex(k, latexConfiguration))
+print(getEditModeLatex(k, latexconfiguration))
 ```
 Press the play button in the upper-right corner of `VS Code`. The result that is displayed in the Terminal:
 ```
@@ -74,11 +74,11 @@ todo. For now, see the JavaScript repo.
 Follow these steps to set up (and verify) a development environment for this repository:
 
 1. Install the latest version of Python via [https://www.python.org/downloads](https://www.python.org/downloads/). The download includes `pip`.
-1. Open the Terminal in VS Code and run `py -m pip install -U pytest`.
-1. Run all tests via `py -m pytest`.
-1. See code coverage: `py -m pip install pytest-cov` + `py -m pytest --cov=src --cov-report term-missing`.
-1. Run all tests for multiple versions of python and multiple operating systems: `py -m pip install --upgrade nox` + `py -m nox` (this uses [`noxfile.py`](noxfile.py) from the root of the repository).
-1. If you're interested all the release steps, see `disthelper/release_steps.txt`.
+1. Open the Terminal in VS Code and run<br/>`py -m pip install -U pytest`.
+1. Run all tests via<br/>`py -m pytest`.
+1. See code coverage:<br/>`py -m pip install pytest-cov`<br/>`py -m pytest --cov=src --cov-report term-missing`.
+1. Run all tests for multiple versions of python and multiple operating systems:<br/>`py -m pip install --upgrade nox`<br/>`py -m nox` (this uses [`noxfile.py`](noxfile.py) from the root of the repository).
+1. If you're interested all the release steps, see [`disthelper/release_steps.txt`](disthelper/release_steps.txt).
 
 ## Ask or contribute
 

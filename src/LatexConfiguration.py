@@ -2,21 +2,21 @@ from typing import Optional
 
 class LatexConfiguration:
   def __init__(self):
-    self.activePlaceholderShape : str = r'\blacksquare'
-    self.activePlaceholderColor : Optional[str] = None
-    self.passivePlaceholderShape : str = r'\square'
-    self.passivePlaceholderColor : Optional[str] = None
-    self.selectionHightlightStart : str = r'\colorbox{#ADD8E6}{\(\displaystyle'
-    self.selectionHightlightEnd : str = r'\)}'
+    self.active_placeholder_shape : str = r'\blacksquare'
+    self.active_placeholder_color : Optional[str] = None
+    self.passive_placeholder_shape : str = r'\square'
+    self.passive_placeholder_color : Optional[str] = None
+    self.selection_hightlight_start : str = r'\colorbox{#ADD8E6}{\(\displaystyle'
+    self.selection_hightlight_end : str = r'\)}'
 
-  def activePlaceholderLatex(self) -> str:
-    if self.activePlaceholderColor is None:
-      return self.activePlaceholderShape
+  def active_placeholder_latex(self) -> str:
+    if self.active_placeholder_color is None:
+      return self.active_placeholder_shape
     else:
-      return r'{\color{' + self.activePlaceholderColor + '}' + self.activePlaceholderShape + '}'
+      return r'{\color{' + self.active_placeholder_color + '}' + self.active_placeholder_shape + '}'
   
-  def passivePlaceholderLatex(self) -> str:
-    if self.passivePlaceholderColor is None:
-      return self.passivePlaceholderShape
+  def passive_placeholder_latex(self) -> str:
+    if self.passive_placeholder_color is None:
+      return self.passive_placeholder_shape
     else:
-      return r'{\color{' + self.passivePlaceholderColor + '}' + self.passivePlaceholderShape + '}'
+      return r'{\color{' + self.passive_placeholder_color + '}' + self.passive_placeholder_shape + '}'

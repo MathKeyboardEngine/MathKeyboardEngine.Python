@@ -28,8 +28,8 @@ py -m pip install mathkeyboardengine==0.1.0a12 (Change the version number to the
 from mathkeyboardengine import concatLatex, LatexConfiguration, Placeholder, TreeNode, KeyboardMemory, getEditModeLatex, getViewModeLatex, LeafNode, BranchingNode, StandardLeafNode, PartOfNumberWithDigits, DecimalSeparatorNode, DigitNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, RoundBracketsNode, MatrixNode, moveRight, moveDown, moveLeft, moveUp, insert, insertWithEncapsulateCurrent, leaveSelectionMode, insertWithEncapsulateSelection, insertWithEncapsulateSelectionAndPrevious, deleteCurrent, deleteSelection, selectLeft, selectRight, inSelectionMode, enterSelectionMode
 
 k = KeyboardMemory()
-latexConfiguration = LatexConfiguration()
-print(getEditModeLatex(k, latexConfiguration))
+latexconfiguration = LatexConfiguration()
+print(getEditModeLatex(k, latexconfiguration))
 ```
 > In the upper-right corner of VS Code, click the play button and verify that the Terminal displays `\blacksquare`. If success, all imports are available as they should.
 

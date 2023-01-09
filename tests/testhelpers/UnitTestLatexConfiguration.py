@@ -3,7 +3,7 @@ from src import LatexConfiguration
 class UnitTestLatexConfiguration(LatexConfiguration):
     def __init__(self) -> None:
         super().__init__()
-        self.activePlaceholderShape = '▦'
-        self.passivePlaceholderShape = '⬚'
-        self.selectionHightlightStart = r'\colorbox{blue}{'
-        self.selectionHightlightEnd = '}'
+        self.active_placeholder_shape = '▦'
+        self.passive_placeholder_shape = '⬚'
+        self.selection_hightlight_start = r'\colorbox{blue}{'
+        self.selection_hightlight_end = '}'
