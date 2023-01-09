@@ -33,13 +33,19 @@ def flatpack(src_folder : str, destination_namespace : str, helpers_path_compone
                         if (line.startswith('from src')):
                             modules = [m.strip() for m in line.split(' import ')[-1].split(',')]
                             for module in modules:
-                                destination_file.write('from ' + (helpers_path_component if helpers_path_component in line else destination_namespace) + '.' + module + ' import ' + module + '\n')
+                                destination_file.write('from ' + (destination_namespace + '.' + helpers_path_component if helpers_path_component in line else destination_namespace) + '.' + module + ' import ' + module + '\n')
                         else:
                             destination_file.write(line + '\n')
 
     with open(path.join(destination_namespace, '__init__.py'), 'x') as dest_root_init:
-        dest_root_init.writelines([('from .' + m + ' import ' + m + '\n') for m in collected_modules])
+        with open(path.join(src_folder, '__init__.py'), 'r') as src_root_init:
+            lines = src_root_init.read().strip().splitlines()
+            for line in lines:
+                if helpers_path_component in line:
+                    raise Exception("The __init__.py from '" + src_folder + "' should not contain '" + helpers_path_component + "'.")
+                init_module = line.split(' ')[-1]
+                dest_root_init.write('from .' + init_module + ' import ' + init_module + '\n')
     if len(collected_helper_modules) > 0:
         with open(path.join(destination_namespace, helpers_path_component, '__init__.py'), "x", encoding='utf-8') as dest_helpers_init:
-            dest_helpers_init.writelines([('from .' + m + ' import ' + m + '\n') for m in collected_helper_modules])
+            dest_helpers_init.write('')
     return [destination_namespace] if len(collected_helper_modules) == 0 else [destination_namespace, destination_namespace + '.' + helpers_path_component]
