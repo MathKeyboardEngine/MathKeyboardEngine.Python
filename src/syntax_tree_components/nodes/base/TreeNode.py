@@ -1,4 +1,5 @@
-from src import Placeholder, LatexConfiguration, concat_latex
+from src import Placeholder, LatexConfiguration
+from src._helpers.concat_latex import concat_latex
 
 class TreeNode:
   def __init__(self):

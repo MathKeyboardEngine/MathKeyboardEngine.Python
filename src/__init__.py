@@ -1,4 +1,3 @@
-from src._helpers.concat_latex import concat_latex
 from src.LatexConfiguration import LatexConfiguration
 from src.syntax_tree_components.Placeholder.Placeholder import Placeholder
 from src.syntax_tree_components.nodes.base.TreeNode import TreeNode
