@@ -1,5 +1,5 @@
 from src import KeyboardMemory, StandardLeafNode, insert, get_view_mode_latex
-from tests.testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
 
 def test_The_minimum_amount_of_required_space_is_added_by_Placeholder_get_latex():
     for data in [
