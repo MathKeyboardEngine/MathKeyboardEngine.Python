@@ -1,4 +1,4 @@
-from src import AscendingBranchingNode, DecimalSeparatorNode, delete_current, DescendingBranchingNode, DigitNode, KeyboardMemory, get_edit_mode_latex, insert, insert_with_encapsulate_current, insert_with_ecapsulate_selection_and_previous, MatrixNode, move_down, move_left, move_right, move_up, RoundBracketsNode, select_left, StandardBranchingNode, StandardLeafNode
+from src import AscendingBranchingNode, DecimalSeparatorNode, delete_current, DescendingBranchingNode, DigitNode, KeyboardMemory, get_edit_mode_latex, insert, insert_with_encapsulate_current, insert_with_encapsulate_selection_and_previous, MatrixNode, move_down, move_left, move_right, move_up, RoundBracketsNode, select_left, StandardBranchingNode, StandardLeafNode
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
 
 def test_can_also_be_used_to_delete_empty_Placeholders_in_some_cases__in_the_experience_of_the_user__x():
@@ -133,7 +133,7 @@ def test_can_revert_raising_selection_to_the_power_of_an_empty_Placeholder():
     select_left(k)
     select_left(k)
     assert r'\colorbox{blue}{12}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    insert_with_ecapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
+    insert_with_encapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
     assert '⬚^{12▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     move_down(k)
     assert '▦^{12}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())

@@ -1,10 +1,15 @@
 import shutil
 from setuptools import setup
 from codecs import open
+import os
 from os import path
 from _disthelper.flatpack import flatpack
 
 flatpack(src_folder='src', destination_folder='mathkeyboardengine')
+
+for dir in ['dist', 'mathkeyboardengine.egg-info', 'build']:
+    if os.path.isdir(dir):
+        shutil.rmtree(dir)
 
 root_dir = path.abspath(path.dirname(__file__))
 with open(path.join(root_dir, 'README.md'), encoding='utf-8') as f:
@@ -12,7 +17,7 @@ with open(path.join(root_dir, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="mathkeyboardengine",
-    version="0.1.0-alpha.12",
+    version="0.1.0-alpha.14",
     description="MathKeyboardEngine provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library.",
     long_description=long_description,
     long_description_content_type="text/markdown",

@@ -25,11 +25,11 @@ py -m pip install mathkeyboardengine==0.1.0a12 (Change the version number to the
 
 > create a new file `main.py` with the following content:
 ```
-from mathkeyboardengine import concatLatex, LatexConfiguration, Placeholder, TreeNode, KeyboardMemory, getEditModeLatex, getViewModeLatex, LeafNode, BranchingNode, StandardLeafNode, PartOfNumberWithDigits, DecimalSeparatorNode, DigitNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, RoundBracketsNode, MatrixNode, moveRight, moveDown, moveLeft, moveUp, insert, insertWithEncapsulateCurrent, leaveSelectionMode, insertWithEncapsulateSelection, insertWithEncapsulateSelectionAndPrevious, deleteCurrent, deleteSelection, selectLeft, selectRight, inSelectionMode, enterSelectionMode
+from mathkeyboardengine import concat_latex, LatexConfiguration, Placeholder, TreeNode, KeyboardMemory, get_edit_mode_latex, get_view_mode_latex, LeafNode, BranchingNode, StandardLeafNode, PartOfNumberWithDigits, DecimalSeparatorNode, DigitNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, RoundBracketsNode, MatrixNode, move_right, move_down, move_left, move_up, insert, insert_with_encapsulate_current, leave_selection_mode, insert_with_encapsulate_selection, insert_with_encapsulate_selection_and_previous, delete_current, delete_selection, select_left, select_right, in_selection_mode, enter_selection_mode
 
 k = KeyboardMemory()
 latexconfiguration = LatexConfiguration()
-print(getEditModeLatex(k, latexconfiguration))
+print(get_edit_mode_latex(k, latexconfiguration))
 ```
 > In the upper-right corner of VS Code, click the play button and verify that the Terminal displays `\blacksquare`. If success, all imports are available as they should.
 

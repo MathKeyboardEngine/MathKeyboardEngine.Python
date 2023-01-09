@@ -1,5 +1,5 @@
 import pytest
-from src import KeyboardMemory, insert, DigitNode, get_edit_mode_latex, select_left, insert_with_ecapsulate_selection_and_previous, AscendingBranchingNode, StandardBranchingNode, StandardLeafNode, enter_selection_mode, DescendingBranchingNode 
+from src import KeyboardMemory, insert, DigitNode, get_edit_mode_latex, select_left, insert_with_encapsulate_selection_and_previous, AscendingBranchingNode, StandardBranchingNode, StandardLeafNode, enter_selection_mode, DescendingBranchingNode 
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
 
 def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_TreeNode():
@@ -11,7 +11,7 @@ def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_T
     select_left(k)
     assert r'2\colorbox{blue}{3}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     # Act
-    insert_with_ecapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
+    insert_with_encapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
     # Assert
     assert '2^{3▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
@@ -23,7 +23,7 @@ def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_P
     select_left(k)
     assert r'\colorbox{blue}{2}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     # Act
-    insert_with_ecapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
+    insert_with_encapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
     # Assert
     assert '⬚^{2▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
@@ -38,7 +38,7 @@ def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a
     select_left(k)
     assert r'2\colorbox{blue}{10}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     # Act
-    insert_with_ecapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
+    insert_with_encapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
     # Assert
     assert '2^{10▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
@@ -52,7 +52,7 @@ def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a
     select_left(k)
     assert r'\colorbox{blue}{12}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     # Act
-    insert_with_ecapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
+    insert_with_encapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
     # Assert
     assert '⬚^{12▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
@@ -66,12 +66,12 @@ def test_invokes_insertWithEncapsulateCurrent_if_inSelectionMode_but_nothing_sel
     enter_selection_mode(k)
     assert '1+12▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     # Act
-    insert_with_ecapsulate_selection_and_previous(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
+    insert_with_encapsulate_selection_and_previous(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     # Assert
     assert r'1+\frac{12}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
 def test_throws_on_inserting_BranchingNode_with_single_Placeholder():
     with pytest.raises(Exception) as ex:
         k = KeyboardMemory()
-        insert_with_ecapsulate_selection_and_previous(k, StandardBranchingNode('[', ']'))
+        insert_with_encapsulate_selection_and_previous(k, StandardBranchingNode('[', ']'))
     assert 'Expected 2 placeholders.' == str(ex.value)
