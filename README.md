@@ -49,7 +49,7 @@ py -m pip install mathkeyboardengine==0.1.0a12
 ```
 Then create a new folder 'MathKeyboardEngineTest' and open it in `VS Code`. Add a file `main.py` with the following content:
 ```
-from mathkeyboardengine import KeyboardMemory, LatexConfiguration, get_edit_mode_latex, AscendingBranchingNode, DigitNode, insert, insert_with_encapsulate_current, StandardLeafNode
+from mathkeyboardengine import *
 
 k = KeyboardMemory()
 latexconfiguration = LatexConfiguration()
