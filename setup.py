@@ -5,7 +5,7 @@ import os
 from os import path
 from _disthelper.flatpack import flatpack
 
-flatpack(src_folder='src', destination_folder='mathkeyboardengine')
+flatpack(src_folder='src', destination_namespace='mathkeyboardengine')
 
 for dir in ['dist', 'mathkeyboardengine.egg-info', 'build']:
     if os.path.isdir(dir):
@@ -17,7 +17,7 @@ with open(path.join(root_dir, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="mathkeyboardengine",
-    version="0.1.0-alpha.14",
+    version="0.1.0-alpha.16",
     description="MathKeyboardEngine provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library.",
     long_description=long_description,
     long_description_content_type="text/markdown",
