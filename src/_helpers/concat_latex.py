@@ -1,4 +1,5 @@
 from typing import Iterable
+from src._helpers.ends_with_latex_command import ends_with_latex_command
 
 def concat_latex(latex_parts: Iterable[str]) -> str:
     s = ""
@@ -7,15 +8,3 @@ def concat_latex(latex_parts: Iterable[str]) -> str:
             s += " "
         s += part
     return s
-
-def ends_with_latex_command(latex: str) -> bool:
-    if len(latex) == 0:
-        return False
-    if latex[-1].isalpha():
-        for i in range(len(latex) - 2, -1, -1):
-            c = latex[i]
-            if c.isalpha():
-                continue
-            else:
-                return c == '\\'
-    return False
