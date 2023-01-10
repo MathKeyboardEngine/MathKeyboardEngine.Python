@@ -75,8 +75,8 @@ Follow these steps to set up (and verify) a development environment for this rep
 
 1. Install the latest version of Python via [https://www.python.org/downloads](https://www.python.org/downloads/). The download includes `pip`.
 1. Open the Terminal in VS Code and run<br/>`py -m pip install -U pytest`.
-1. Run all tests via<br/>`py -m pytest`.
-1. See code coverage:<br/>`py -m pip install pytest-cov`<br/>`py -m pytest --cov=src --cov-report term-missing`.
+1. Run all tests via<br/>`py -m pytest tests/`.
+1. See code coverage:<br/>`py -m pip install pytest-cov`<br/>`py -m pytest tests/ --cov=src --cov-report term-missing`.
 1. Run all tests for multiple versions of python and multiple operating systems:<br/>`py -m pip install --upgrade nox`<br/>`py -m nox` (this uses [`noxfile.py`](noxfile.py) from the root of the repository).
 1. If you're interested all the release steps, see [`_disthelper/release_steps.txt`](_disthelper/release_steps.txt).
 
