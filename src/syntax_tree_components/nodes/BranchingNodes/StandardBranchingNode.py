@@ -3,8 +3,8 @@ from src import BranchingNode, KeyboardMemory, LatexConfiguration, Placeholder
 
 class StandardBranchingNode(BranchingNode):
   def __init__(self, before: str, then: str, *rest: str) -> None:
-    placeholderCount = len(rest) + 1
-    placeholders : List[Placeholder] = [Placeholder() for i in range(0, placeholderCount)]
+    placeholder_count = len(rest) + 1
+    placeholders : List[Placeholder] = [Placeholder() for i in range(0, placeholder_count)]
     super().__init__(placeholders)
     self.before = before
     self.then = then

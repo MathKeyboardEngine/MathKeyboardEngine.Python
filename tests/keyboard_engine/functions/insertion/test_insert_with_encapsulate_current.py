@@ -79,12 +79,12 @@ def test_can_encapsulate_round_brackets():
     insert(k, DigitNode('3'))
     move_right(k)
     assert r'1+(2+3)▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    powerNode = AscendingBranchingNode('', '^{', '}')
+    power_node = AscendingBranchingNode('', '^{', '}')
     # Act
-    insert_with_encapsulate_current(k, powerNode)
+    insert_with_encapsulate_current(k, power_node)
     # Assert
     assert r'1+(2+3)^{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    assert powerNode.placeholders[0].get_latex(k, None) == '(2+3)'
+    assert power_node.placeholders[0].get_latex(k, None) == '(2+3)'
 
 def test_with_deleteOuterRoundBracketsIfAny__deletes_outer_round_brackets_during_encapsulation():
     # Arrange
@@ -105,7 +105,7 @@ def test_with_deleteOuterRoundBracketsIfAny__deletes_outer_round_brackets_during
     move_right(k)
     assert r'1+((x+2)(x-3))▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     # Act
-    insert_with_encapsulate_current(k, DescendingBranchingNode(r'\frac{', '}{', '}'), True)
+    insert_with_encapsulate_current(k, DescendingBranchingNode(r'\frac{', '}{', '}'), delete_outer_round_brackets_if_any=True)
     # Assert
     assert r'1+\frac{(x+2)(x-3)}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
@@ -121,7 +121,7 @@ def test_with_deleteOuterRoundBracketsIfAny__does_not_delete_square_brackets_dur
     move_right(k)
     # Act
     fraction = DescendingBranchingNode(r'\frac{', '}{', '}')
-    insert_with_encapsulate_current(k, fraction, True)
+    insert_with_encapsulate_current(k, fraction, delete_outer_round_brackets_if_any=True)
     # Assert
     assert r'1+\frac{|x+3|}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     assert fraction.placeholders[0].get_latex(k, None) == '|x+3|'
@@ -135,6 +135,6 @@ def test_with_deleteOuterRoundBracketsIfAny__encapsulation_by_single_placeholder
     move_right(k)
     assert '(AB)▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     # Act
-    insert_with_encapsulate_current(k, StandardBranchingNode(r'\overrightarrow{', '}'), True)
+    insert_with_encapsulate_current(k, StandardBranchingNode(r'\overrightarrow{', '}'), delete_outer_round_brackets_if_any=True)
     # Assert
     assert r'\overrightarrow{AB}▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())

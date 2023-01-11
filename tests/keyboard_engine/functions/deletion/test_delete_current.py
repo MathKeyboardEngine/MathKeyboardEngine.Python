@@ -99,8 +99,8 @@ def test_can_revert_insertWithEncapsulateCurrent_sometimes__execution_path_with_
     # Arrange
     k = KeyboardMemory()
     insert(k, DigitNode('2'))
-    powerNode = AscendingBranchingNode('', '^{', '}')
-    insert_with_encapsulate_current(k, powerNode)
+    power_node = AscendingBranchingNode('', '^{', '}')
+    insert_with_encapsulate_current(k, power_node)
     d3 = DigitNode('3')
     insert(k, d3)
     insert_with_encapsulate_current(k, AscendingBranchingNode('', '^{', '}'))
@@ -108,7 +108,7 @@ def test_can_revert_insertWithEncapsulateCurrent_sometimes__execution_path_with_
     # Act & assert
     delete_current(k)
     assert '2^{3▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    assert d3.parent_placeholder == powerNode.placeholders[1]
+    assert d3.parent_placeholder == power_node.placeholders[1]
     delete_current(k)
     assert '2^{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 

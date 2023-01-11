@@ -6,10 +6,10 @@ def test_allows_customizing_the_shape_of_the_cursor_and_empty_Placeholder():
     insert(k, AscendingBranchingNode('', '^{', '}'))
     config = LatexConfiguration()
     # Act
-    config.active_placeholder_shape = 'myCursor'
-    config.passive_placeholder_shape = 'myEmptyPlace'
+    config.active_placeholder_shape = 'my_cursor'
+    config.passive_placeholder_shape = 'my_empty_place'
     # Assert
-    assert r'myCursor^{myEmptyPlace}' == get_edit_mode_latex(k, config)
+    assert r'my_cursor^{my_empty_place}' == get_edit_mode_latex(k, config)
 
 def test_allows_customizing_the_color_of_the_cursorand_Placeholders():
     # Arrange

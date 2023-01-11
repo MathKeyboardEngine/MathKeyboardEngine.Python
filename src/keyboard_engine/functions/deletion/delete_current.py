@@ -49,18 +49,18 @@ def delete_current(k: KeyboardMemory) -> None:
       k.current.parent_placeholder.nodes.remove(k.current)
       k.current = coalesce(previous_node, k.current.parent_placeholder)
 
-def encapsulate_previous_into(previousNode: TreeNode, targetPlaceholder: Placeholder):
-  targetPlaceholder.parent_node.parent_placeholder.nodes.remove(previousNode)
-  targetPlaceholder.nodes.append(previousNode)
-  previousNodeOldParentPlaceholder = previousNode.parent_placeholder
-  previousNode.parent_placeholder = targetPlaceholder
-  if isinstance(previousNode, PartOfNumberWithDigits):
-    encapsulate_all_parts_of_number_with_digits_left_of_index(len(previousNodeOldParentPlaceholder.nodes) - 1, previousNodeOldParentPlaceholder.nodes, targetPlaceholder)
+def encapsulate_previous_into(previous_node: TreeNode, target_placeholder: Placeholder):
+  target_placeholder.parent_node.parent_placeholder.nodes.remove(previous_node)
+  target_placeholder.nodes.append(previous_node)
+  previous_node_old_parent_placeholder = previous_node.parent_placeholder
+  previous_node.parent_placeholder = target_placeholder
+  if isinstance(previous_node, PartOfNumberWithDigits):
+    encapsulate_all_parts_of_number_with_digits_left_of_index(len(previous_node_old_parent_placeholder.nodes) - 1, previous_node_old_parent_placeholder.nodes, target_placeholder)
 
-def delete_outer_branching_node_but_not_its_contents(k: KeyboardMemory, nonEmptyPlaceholder: Placeholder):
-  outerBranchingNode = nonEmptyPlaceholder.parent_node
-  indexOfOuterBranchingNode = outerBranchingNode.parent_placeholder.nodes.index(outerBranchingNode)
-  outerBranchingNode.parent_placeholder.nodes[indexOfOuterBranchingNode: indexOfOuterBranchingNode + 1] = nonEmptyPlaceholder.nodes
-  for node in nonEmptyPlaceholder.nodes:
-    node.parent_placeholder = outerBranchingNode.parent_placeholder
-  k.current = nonEmptyPlaceholder.nodes[-1]
+def delete_outer_branching_node_but_not_its_contents(k: KeyboardMemory, non_empty_placeholder: Placeholder):
+  outer_branchingnode = non_empty_placeholder.parent_node
+  index_of_outer_branchingnode = outer_branchingnode.parent_placeholder.nodes.index(outer_branchingnode)
+  outer_branchingnode.parent_placeholder.nodes[index_of_outer_branchingnode: index_of_outer_branchingnode + 1] = non_empty_placeholder.nodes
+  for node in non_empty_placeholder.nodes:
+    node.parent_placeholder = outer_branchingnode.parent_placeholder
+  k.current = non_empty_placeholder.nodes[-1]

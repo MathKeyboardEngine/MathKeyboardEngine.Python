@@ -15,7 +15,7 @@ def pop_selection(k: KeyboardMemory) -> List[TreeNode]:
     return [k.current.nodes.pop(0) for i in range(diff)]
   else:
     siblings = k.current.parent_placeholder.nodes
-    indexOfLeftBorder = siblings.index(k.inclusive_selection_left_border)
+    index_of_left_border = siblings.index(k.inclusive_selection_left_border)
     k.current = coalesce(first_before_or_none(siblings, k.inclusive_selection_left_border), k.current.parent_placeholder)
     leave_selection_mode(k)
-    return [siblings.pop(indexOfLeftBorder) for i in range(abs(diff))]
+    return [siblings.pop(index_of_left_border) for i in range(abs(diff))]
