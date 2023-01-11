@@ -58,7 +58,9 @@ def flatpack(
         with open(path.join(destination_namespace, helpers_path_component, '__init__.py'), "x", encoding='utf-8') as dest_helpers_init:
             dest_helpers_init.write('')
     
-    if src_tests_folder is not None:
+    if src_tests_folder is None:
+        print("flatpack: skip creating tests because 'src_tests_folder' is not provided.")
+    else:
         flatpack_tests_folder = 'flatpacked_' + destination_namespace + '_tests'
 
         print("flatpack: creating '" + flatpack_tests_folder + "'.")
@@ -66,23 +68,27 @@ def flatpack(
         if path.isdir(flatpack_tests_folder):
             shutil.rmtree(flatpack_tests_folder)
         os.mkdir(flatpack_tests_folder)
-        for srctestfilepath in glob.glob(src_tests_folder + '/**/*.py', recursive=True):
+        for srctestfilepath in glob.glob(src_tests_folder + '/**/*.*', recursive=True):
+            desttestfilepath = os.path.join(flatpack_tests_folder, os.path.relpath(srctestfilepath, (src_tests_folder)))
             filename = path.basename(srctestfilepath)
-            directories = srctestfilepath[:-len(filename)]
+            directories = desttestfilepath[:-len(filename)]
             if not os.path.exists(directories):
                 os.makedirs(directories)
-            with open(srctestfilepath, encoding='utf-8') as srctest_file:
-                lines = srctest_file.read().splitlines()
-                with open(os.path.join(flatpack_tests_folder, filename), "x", encoding='utf-8') as destination_file:
-                    for line in lines:
-                        if (line.startswith('from ' + src_folder)):
-                            if helpers_path_component in line:
-                                modules = [m.strip() for m in line.split(' import ')[-1].split(',')]
-                                for module in modules:
-                                    destination_file.write('from ' + destination_namespace + '.' + helpers_path_component + '.' + module + ' import ' + module + '\n')
+            if srctestfilepath.endswith('.py'):
+                with open(srctestfilepath, encoding='utf-8') as srctest_file:
+                    lines = srctest_file.read().splitlines()
+                    with open(desttestfilepath, "x", encoding='utf-8') as destination_file:
+                        for line in lines:
+                            if (line.startswith('from ' + src_folder)):
+                                if helpers_path_component in line:
+                                    modules = [m.strip() for m in line.split(' import ')[-1].split(',')]
+                                    for module in modules:
+                                        destination_file.write('from ' + destination_namespace + '.' + helpers_path_component + '.' + module + ' import ' + module + '\n')
+                                else:
+                                    destination_file.write('from ' + destination_namespace + ' import ' + line.split(' import ')[-1] + '\n')
                             else:
-                                destination_file.write('from ' + destination_namespace + ' import ' + line.split(' import ')[-1] + '\n')
-                        else:
-                            destination_file.write(line + '\n')
+                                destination_file.write(line + '\n')
+            elif not srctestfilepath.endswith('.pyc'):
+                shutil.copyfile(srctestfilepath, desttestfilepath)
     print('flatpack: ready')
     return [destination_namespace] if len(collected_helper_modules) == 0 else [destination_namespace, destination_namespace + '.' + helpers_path_component]
