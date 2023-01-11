@@ -8,4 +8,5 @@ def tests(session):
         destination_namespace='mathkeyboardengine', 
         src_tests_folder='tests')
     session.install('pytest')
-    session.run('pytest', 'flatpacked_mathkeyboardengine_tests/')
+    session.install('pytest-cov')
+    session.run('pytest', 'flatpacked_mathkeyboardengine_tests/', '--cov=mathkeyboardengine', '--cov-report', 'term-missing', '--cov-fail-under=100')
