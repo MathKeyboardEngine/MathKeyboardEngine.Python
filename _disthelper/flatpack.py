@@ -50,7 +50,7 @@ def flatpack(
             for line in lines:
                 if helpers_path_component in line:
                     raise Exception("The __init__.py from '" + src_folder + "' should not contain '" + helpers_path_component + "'.")
-                if not line.startswith('from ' + src_folder) and ' import ' in line and not ',' in line:
+                if not line.startswith('from ' + src_folder) or not ' import ' in line or ',' in line:
                     raise Exception("Each line in '" + src_folder + "/__init__.py' should start with 'from " + src_folder + "' and should contain a single import, which is not the case for '" + line + "'.")
                 init_module = line.split(' ')[-1]
                 dest_root_init.write('from .' + init_module + ' import ' + init_module + '\n')

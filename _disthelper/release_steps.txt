@@ -11,9 +11,9 @@ py -m pip install twine
 
 > in setup.py, increment the version="0.1.0-alpha.?", then run:
 py setup.py sdist bdist_wheel
-py -m twine check dist/*
 
 > upload to PyPi:
+py -m twine check dist/*
 py -m twine upload dist/*
 
 
