@@ -3,7 +3,7 @@
 
 ## MathKeyboardEngine for Python
 
-MathKeyboardEngine for Python provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example [matplotlib.mathtext](https://matplotlib.org/stable/api/mathtext_api.html)).
+MathKeyboardEngine for Python provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example [matplotlib.mathtext](https://matplotlib.org/stable/api/mathtext_api.html), [sympy](https://www.sympy.org) or [Katex](https://katex.org/) in a webview as can be seen working in the PyQt6 example).
 
 Also available:
 
@@ -12,11 +12,17 @@ Also available:
 
 #### An execution timeline
 
-todo. For now, see the JavaScript repo.
+1. You load a page with your customized virtual math keyboard (based on one of the examples). The keys show typeset LaTeX - loaded form a local png file or rendered on the fly - and a cursor is displayed in a textbox-look-a-like element.
+1. On your customized virtual math keyboard, you press a key. The key calls a MathKeyboardEngine function, for example `insert(some_matrix_node)` or `move_up()`, `delete_current()`, etc.
+1. Calling `get_edit_mode_latex()` outputs the total of LaTeX you typed, for example `\frac{3}{4}\blacksquare` (if `\blacksquare` is your cursor), which you then feed to the typesetting library for display.
+1. Calling `get_view_mode_latex()` outputs the LaTeX without a cursor.
+
 
 #### Let me test it now!
+ 
+Live (JavaScript) examples can be tested at [MathKeyboardEngine.GitHub.io](https://mathkeyboardengine.github.io).
 
-Live examples can be tested at [MathKeyboardEngine.GitHub.io](https://mathkeyboardengine.github.io).
+A Python example for the PyQt6 GUI framework can be found in the [examples](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) folder. Note that the Python example is limited, because it does not handle physical keyboard input.
 
 #### Pros and cons?
 
