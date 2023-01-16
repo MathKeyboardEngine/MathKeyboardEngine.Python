@@ -3,7 +3,7 @@
 
 ## MathKeyboardEngine for Python
 
-MathKeyboardEngine for Python provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example [matplotlib.mathtext](https://matplotlib.org/stable/api/mathtext_api.html), [sympy](https://www.sympy.org) or [Katex](https://katex.org/) in a webview as can be seen working in the PyQt6 example).
+MathKeyboardEngine for Python provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example [matplotlib.mathtext](https://matplotlib.org/stable/api/mathtext_api.html), [sympy in combination with the official latex install](https://www.sympy.org) or [Katex in a webview](https://katex.org/)).
 
 Also available:
 
