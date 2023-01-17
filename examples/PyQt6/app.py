@@ -1,6 +1,6 @@
 from typing import Callable, List, Optional, Union
 from functools import partial
-from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QGridLayout, QLabel, QPushButton, QComboBox
+from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QGridLayout, QTextEdit, QPushButton, QComboBox
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import QSize
 from mathkeyboardengine import *
@@ -11,27 +11,34 @@ app = QApplication([])
 class ExampleWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("MathKeyboardEngine with PyQt6KatexView - unstyled example")
+        self.setWindowTitle("MathKeyboardEngine with Katex in a QWebEngineView - unstyled example")
 
         self.k = KeyboardMemory()
         self.c = LatexConfiguration()
         
         self.selection_mode_keys : List[QPushButton] = []
-        self.gridLyout = QGridLayout()
+        self.gridLayout = QGridLayout()
         widget = QWidget()
-        widget.setLayout(self.gridLyout)
+        widget.setLayout(self.gridLayout)
         self.setCentralWidget(widget)
 
         initial_latex = get_edit_mode_latex(self.k, self.c)
         self.output_KatexView = KatexView(latex=initial_latex)
-        self.output_view_mode_latex = QLabel(text=initial_latex)
-        self.gridLyout.addWidget(self.output_KatexView, 0, 0, 1, 14)
-        self.gridLyout.addWidget(self.output_view_mode_latex, 1, 0, 1, 6)
+        self.output_view_mode_latex = QTextEdit()
+        self.output_view_mode_latex.setText(initial_latex)
+        self.output_view_mode_latex.setFixedHeight(30)
+        self.output_view_mode_latex.setReadOnly(True)
+        self.gridLayout.addWidget(self.output_KatexView, 0, 0, 1, 14)
+        self.gridLayout.addWidget(self.output_view_mode_latex, 1, 0, 1, 11)
 
         selection_mode_toggle_key = QPushButton()
         selection_mode_toggle_key.setStyleSheet("background-color: #add8e6")
         selection_mode_toggle_key.clicked.connect(self.toggle_selection_mode)
-        self.gridLyout.addWidget(selection_mode_toggle_key, 2, 0)
+        self.gridLayout.addWidget(selection_mode_toggle_key, 2, 0)
+
+        self.multiplication_sign_setting = QPushButton(text=r'\times')
+        self.multiplication_sign_setting.clicked.connect(self.multiplication_sign_setting_clicked)
+        self.gridLayout.addWidget(self.multiplication_sign_setting, 1, 13)
 
         self.register_key('flame', 2, 2, delete_current, delete_selection)
         self.register_key('uparrow', 2, 1, move_up)
@@ -42,8 +49,14 @@ class ExampleWindow(QMainWindow):
         for i in range(0, 10):
             self.register_node_key(row= 2, col=3 + i, img_name=str(i), node_getter=partial(DigitNode, str(i)))
         
-        self.my_decimal_separator_setting = '.'
-        self.register_node_key(row= 2, col=13, img_name='decimalpoint', node_getter=partial(DecimalSeparatorNode, lambda: self.my_decimal_separator_setting))
+        self.decimal_separator_setting = QPushButton(text='decimal point')
+        self.decimal_separator_setting.clicked.connect(self.decimal_separator_setting_clicked)
+        self.gridLayout.addWidget(self.decimal_separator_setting, 1, 11, 1, 2)
+
+        self.decimal_separator_key = QPushButton(text='.')
+        self.decimal_separator_key.setStyleSheet('font-size: 15px')
+        self.decimal_separator_key.clicked.connect(lambda: self.node_key_clicked(lambda: DecimalSeparatorNode(lambda: '.' if self.decimal_separator_setting.text() == 'decimal point' else '{,}')))
+        self.gridLayout.addWidget(self.decimal_separator_key, 2, 13)
 
         letters = ['a', 'b', 'x', 'y', 'z']
         for i in range(0, len(letters)):
@@ -67,7 +80,7 @@ class ExampleWindow(QMainWindow):
         self.register_node_key(row= 4, col=7, img_name='pm', node_getter=lambda: StandardLeafNode(r'\pm'))
         self.register_node_key(row= 4, col=8, img_name='plus', node_getter=lambda: StandardLeafNode('+'))
         self.register_node_key(row= 4, col=9, img_name='minus', node_getter=lambda: StandardLeafNode('-'))
-        self.register_node_key(row= 4, col=10, img_name='times', node_getter=lambda: StandardLeafNode(r'\times'))
+        self.register_node_key(row= 4, col=10, img_name='times', node_getter=lambda: StandardLeafNode(lambda: r'\cdot' if 'dot' in self.multiplication_sign_setting.text() else  r'\times'))
         self.register_node_key(row= 4, col=11, img_name='ratio', node_getter=lambda: StandardLeafNode(':'))
         self.register_node_key(row= 4, col=12, img_name='div', node_getter=lambda: StandardLeafNode(r'\div'))
         self.register_node_key(row= 4, col=13, img_name='faculty', node_getter=lambda: StandardLeafNode('!'))
@@ -95,8 +108,8 @@ class ExampleWindow(QMainWindow):
         def get_matrix():
             return MatrixNode('pmatrix', self.matrix_width.currentIndex() + 1, self.matrix_height.currentIndex() + 1)
         self.register_node_key(row=4, col=6, img_name='pmatrix',node_getter=get_matrix, hex_color="#FFF")
-        self.gridLyout.addWidget(self.matrix_width, 5, 5)
-        self.gridLyout.addWidget(self.matrix_height, 5, 6)
+        self.gridLayout.addWidget(self.matrix_width, 5, 5)
+        self.gridLayout.addWidget(self.matrix_height, 5, 6)
 
         self.register_node_key(row=5, col=7, img_name='approx', node_getter=lambda: StandardLeafNode(r'\approx'))
         self.register_node_key(row=5, col=8, img_name='equal', node_getter=lambda: StandardLeafNode('='))
@@ -147,9 +160,9 @@ class ExampleWindow(QMainWindow):
         if hex_color is not None:
             key.setStyleSheet("background-color: " + hex_color)
         key.clicked.connect(partial(self.node_key_clicked, node_getter, onclick_func_for_keyboardmemory_and_node, onclick_selection_mode_func_for_keyboardmemory_and_node))
-        self.gridLyout.addWidget(key, row, col)
+        self.gridLayout.addWidget(key, row, col)
 
-    def node_key_clicked(self, node_getter, onclick_func_for_keyboardmemory_and_node, onclick_selection_mode_arrow_func_for_keyboardmemory_and_node):
+    def node_key_clicked(self, node_getter, onclick_func_for_keyboardmemory_and_node = insert, onclick_selection_mode_arrow_func_for_keyboardmemory_and_node = None):
         if in_selection_mode(self.k):
             if onclick_selection_mode_arrow_func_for_keyboardmemory_and_node is not None:
                 onclick_selection_mode_arrow_func_for_keyboardmemory_and_node(self.k, node_getter())
@@ -168,7 +181,7 @@ class ExampleWindow(QMainWindow):
             key.setIconSize(QSize(35,20))
         if onclick_selection_mode_func_for_keyboardmemory is not None:
             self.selection_mode_keys.append(key)
-        self.gridLyout.addWidget(key, row, col)
+        self.gridLayout.addWidget(key, row, col)
         key.clicked.connect(partial(self.key_clicked, onclick_func_for_keyboardmemory, onclick_selection_mode_func_for_keyboardmemory, should_leave_selection_mode))
  
     def key_clicked(self, onclick_func_for_keyboardmemory : Callable[[KeyboardMemory], None], onclick_selection_mode_func_for_keyboardmemory, should_leave_selection_mode):
@@ -206,6 +219,16 @@ class ExampleWindow(QMainWindow):
           self.c.active_placeholder_shape = '|'
         self.output_KatexView.render(r'\displaystyle ' + get_edit_mode_latex(self.k, self.c))
         self.output_view_mode_latex.setText(get_view_mode_latex(self.k, self.c))
+
+    def multiplication_sign_setting_clicked(self):
+        self.multiplication_sign_setting.setText(r'\times' if r'\cdot' == self.multiplication_sign_setting.text() else r'\cdot')
+        self.display_result()
+    
+    def decimal_separator_setting_clicked(self):
+        should_become_point = 'decimal comma' == self.decimal_separator_setting.text()
+        self.decimal_separator_setting.setText('decimal point' if should_become_point else 'decimal comma')
+        self.decimal_separator_key.setText('.' if should_become_point else ',')
+        self.display_result()
 
 window = ExampleWindow()
 window.show()
