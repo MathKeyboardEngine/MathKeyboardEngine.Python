@@ -1,8 +1,9 @@
-from src import KeyboardMemory, BranchingNode, insert, move_right, PartOfNumberWithDigits, RoundBracketsNode, TreeNode
-from src.keyboard_engine.functions._helpers.encapsulate import encapsulate
-from src.keyboard_engine.functions._helpers.encapsulate_all_parts_of_number_with_digits_left_of_index import encapsulate_all_parts_of_number_with_digits_left_of_index
+from src import BranchingNode, KeyboardMemory, PartOfNumberWithDigits, RoundBracketsNode, TreeNode, insert, move_right
 from src._helpers.coalesce import coalesce
 from src._helpers.first_after_or_none import first_after_or_none
+from src.keyboard_engine.functions._helpers.encapsulate import encapsulate
+from src.keyboard_engine.functions._helpers.encapsulate_all_parts_of_number_with_digits_left_of_index import encapsulate_all_parts_of_number_with_digits_left_of_index
+
 
 def insert_with_encapsulate_current(k: KeyboardMemory, new_node: BranchingNode, delete_outer_round_brackets_if_any : bool = False) -> None:
   encapsulating_placeholder = new_node.placeholders[0]

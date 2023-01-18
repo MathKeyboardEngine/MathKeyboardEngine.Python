@@ -1,5 +1,6 @@
 from src import KeyboardMemory, Placeholder, TreeNode, move_right
 
+
 def insert(k: KeyboardMemory, new_node: TreeNode):
   if isinstance(k.current, Placeholder):
     k.current.nodes.insert(0, new_node)

@@ -1,5 +1,6 @@
-from src import KeyboardMemory, in_selection_mode, insert, DigitNode, move_left, get_edit_mode_latex, select_right, select_left, StandardBranchingNode, StandardLeafNode, move_right
+from src import DigitNode, KeyboardMemory, StandardBranchingNode, StandardLeafNode, get_edit_mode_latex, in_selection_mode, insert, move_left, move_right, select_left, select_right
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_can_select_a_single_TreeNode_and_the_selection_is_correctly_displayed__case__the_exclusive_left_border_is_a_TreeNode():
     # Arrange

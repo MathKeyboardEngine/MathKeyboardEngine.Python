@@ -1,5 +1,6 @@
-from src import AscendingBranchingNode, DecimalSeparatorNode, delete_current, DescendingBranchingNode, DigitNode, KeyboardMemory, get_edit_mode_latex, insert, insert_with_encapsulate_current, insert_with_encapsulate_selection_and_previous, MatrixNode, move_down, move_left, move_right, move_up, RoundBracketsNode, select_left, StandardBranchingNode, StandardLeafNode
+from src import AscendingBranchingNode, DecimalSeparatorNode, DescendingBranchingNode, DigitNode, KeyboardMemory, MatrixNode, RoundBracketsNode, StandardBranchingNode, StandardLeafNode, delete_current, get_edit_mode_latex, insert, insert_with_encapsulate_current, insert_with_encapsulate_selection_and_previous, move_down, move_left, move_right, move_up, select_left
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_can_also_be_used_to_delete_empty_Placeholders_in_some_cases__in_the_experience_of_the_user__x():
     # Arrange

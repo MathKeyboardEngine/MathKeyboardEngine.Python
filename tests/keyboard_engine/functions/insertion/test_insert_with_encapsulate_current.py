@@ -1,5 +1,6 @@
-from src import AscendingBranchingNode, DecimalSeparatorNode, DescendingBranchingNode, RoundBracketsNode, DigitNode, MatrixNode, Placeholder, KeyboardMemory, StandardLeafNode, StandardBranchingNode, get_edit_mode_latex, insert_with_encapsulate_current, insert, move_right
+from src import AscendingBranchingNode, DecimalSeparatorNode, DescendingBranchingNode, DigitNode, KeyboardMemory, MatrixNode, Placeholder, RoundBracketsNode, StandardBranchingNode, StandardLeafNode, get_edit_mode_latex, insert, insert_with_encapsulate_current, move_right
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_does_a_regular_insert_if_current_is_a_Placeholder():
     # Arrange

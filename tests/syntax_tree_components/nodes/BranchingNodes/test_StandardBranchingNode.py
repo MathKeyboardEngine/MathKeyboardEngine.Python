@@ -1,5 +1,6 @@
-from src import KeyboardMemory, DigitNode, insert, StandardBranchingNode, get_edit_mode_latex, move_right, move_left, delete_current
+from src import DigitNode, KeyboardMemory, StandardBranchingNode, delete_current, get_edit_mode_latex, insert, move_left, move_right
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_sqrt_3_right_left_left_left_right():
     k = KeyboardMemory()

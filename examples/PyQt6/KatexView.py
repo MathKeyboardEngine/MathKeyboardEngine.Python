@@ -1,5 +1,7 @@
 from typing import Optional
+
 from PyQt6.QtWebEngineWidgets import QWebEngineView
+
 
 class KatexView(QWebEngineView):
     default_css = 'body { margin: 1px } div { height: 98vh }'

@@ -1,5 +1,7 @@
 from typing import List
+
 from src import BranchingNode, KeyboardMemory, LatexConfiguration, Placeholder
+
 
 class StandardBranchingNode(BranchingNode):
   def __init__(self, before: str, then: str, *rest: str) -> None:

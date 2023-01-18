@@ -1,7 +1,9 @@
 from itertools import chain
 from typing import List, Union
+
 from src import LatexConfiguration
 from src._helpers.concat_latex import concat_latex
+
 
 class Placeholder:
     def __init__(self):

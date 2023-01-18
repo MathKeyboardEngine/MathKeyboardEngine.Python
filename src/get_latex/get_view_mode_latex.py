@@ -1,4 +1,5 @@
 from typing import Union
+
 from src import KeyboardMemory, LatexConfiguration, Placeholder, TreeNode
 
 empty_keyboardmemory = KeyboardMemory()

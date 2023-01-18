@@ -1,6 +1,8 @@
 import pytest
-from src import TreeNode, KeyboardMemory
+
+from src import KeyboardMemory, TreeNode
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_not_implementing_get_latex_part_should_raise():
     with pytest.raises(Exception) as ex:

@@ -1,5 +1,7 @@
 from typing import List, Union
+
 from src import Placeholder, TreeNode
+
 
 class BranchingNode(TreeNode):
   def __init__(self, left_to_right : List[Placeholder]) -> None:

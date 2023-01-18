@@ -1,10 +1,12 @@
-from typing import Callable, List, Optional, Union
 from functools import partial
-from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow, QGridLayout, QTextEdit, QPushButton, QComboBox
-from PyQt6.QtGui import QIcon
-from PyQt6.QtCore import QSize
-from mathkeyboardengine import *
+from typing import Callable, List, Optional, Union
+
 from KatexView import KatexView
+from PyQt6.QtCore import QSize
+from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QApplication, QComboBox, QGridLayout, QMainWindow, QPushButton, QTextEdit, QWidget
+
+from mathkeyboardengine import *
 
 app = QApplication([])
 

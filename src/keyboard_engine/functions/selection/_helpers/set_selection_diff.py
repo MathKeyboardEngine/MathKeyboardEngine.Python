@@ -1,5 +1,6 @@
 from src import KeyboardMemory, Placeholder
 
+
 def set_selection_diff(k: KeyboardMemory, diff_with_current: int) -> None:
   k.selection_diff = diff_with_current
   if diff_with_current == 0:

@@ -1,6 +1,8 @@
 import pytest
-from src import delete_current, KeyboardMemory, MatrixNode, Placeholder, insert, move_right, move_left, move_down, move_up, DigitNode, get_edit_mode_latex
+
+from src import DigitNode, KeyboardMemory, MatrixNode, Placeholder, delete_current, get_edit_mode_latex, insert, move_down, move_left, move_right, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_pmatrix_width2_height__1_right_2_down_4_down_6():
     k = KeyboardMemory() 

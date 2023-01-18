@@ -1,5 +1,6 @@
-from src import KeyboardMemory, DigitNode, insert, get_edit_mode_latex, move_left
+from src import DigitNode, KeyboardMemory, get_edit_mode_latex, insert, move_left
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_instert_prepends_if_current_is_a_Placeholder():
     # Arrange

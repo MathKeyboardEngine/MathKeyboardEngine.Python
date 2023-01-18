@@ -1,5 +1,6 @@
-from src import get_edit_mode_latex, get_view_mode_latex, KeyboardMemory, insert, DigitNode, move_down, DescendingBranchingNode
+from src import DescendingBranchingNode, DigitNode, KeyboardMemory, get_edit_mode_latex, get_view_mode_latex, insert, move_down
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_can_get_the_LaTeX_for_a_BranchingNode():
   # Arrange

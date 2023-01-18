@@ -1,5 +1,7 @@
 from typing import List, Optional, Tuple
-from src import BranchingNode, KeyboardMemory, Placeholder, LatexConfiguration
+
+from src import BranchingNode, KeyboardMemory, LatexConfiguration, Placeholder
+
 
 class MatrixNode(BranchingNode):
   def __init__(self, matrix_type: str, width: int, height: int) -> None:

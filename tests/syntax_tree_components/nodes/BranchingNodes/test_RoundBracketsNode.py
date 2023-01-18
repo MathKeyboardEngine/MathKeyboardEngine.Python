@@ -1,5 +1,6 @@
-from src import KeyboardMemory, insert, RoundBracketsNode, get_edit_mode_latex
+from src import KeyboardMemory, RoundBracketsNode, get_edit_mode_latex, insert
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_Default_round_brackets():
     k = KeyboardMemory()

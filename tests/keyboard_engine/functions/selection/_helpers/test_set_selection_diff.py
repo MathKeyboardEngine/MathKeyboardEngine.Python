@@ -1,7 +1,9 @@
 import pytest
-from src import KeyboardMemory, insert, DigitNode, select_left, get_edit_mode_latex
-from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
+from src import DigitNode, KeyboardMemory, get_edit_mode_latex, insert, select_left
 from src.keyboard_engine.functions.selection._helpers.set_selection_diff import set_selection_diff
+from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_throws_at_nonsensical_request():
     # Arrange

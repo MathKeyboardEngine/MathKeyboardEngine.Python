@@ -2,6 +2,7 @@ from src import BranchingNode, KeyboardMemory, Placeholder
 from src._helpers.coalesce import coalesce
 from src._helpers.last_or_none import last_or_none
 
+
 def move_down(k: KeyboardMemory) -> None:
   from_placeholder = k.current if isinstance(k.current, Placeholder) else k.current.parent_placeholder
   suggesting_node: BranchingNode

@@ -1,5 +1,7 @@
 from typing import Union
+
 from src import Placeholder, StandardBranchingNode
+
 
 class DescendingBranchingNode(StandardBranchingNode):
   def get_move_down_suggestion(self, from_placeholder: Placeholder) -> Union[Placeholder, None]:

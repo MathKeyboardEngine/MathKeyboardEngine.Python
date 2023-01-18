@@ -1,7 +1,9 @@
 from typing import Union
+
 from src import BranchingNode, KeyboardMemory, Placeholder, TreeNode
 from src._helpers.coalesce import coalesce
 from src._helpers.first_after_or_none import first_after_or_none
+
 
 def move_right(k: KeyboardMemory) -> None:
   if isinstance(k.current, Placeholder):

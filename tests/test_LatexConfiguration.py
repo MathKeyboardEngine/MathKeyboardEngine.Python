@@ -1,4 +1,5 @@
-from src import AscendingBranchingNode, KeyboardMemory, LatexConfiguration, insert, get_edit_mode_latex
+from src import AscendingBranchingNode, KeyboardMemory, LatexConfiguration, get_edit_mode_latex, insert
+
 
 def test_allows_customizing_the_shape_of_the_cursor_and_empty_Placeholder():
     # Arrange

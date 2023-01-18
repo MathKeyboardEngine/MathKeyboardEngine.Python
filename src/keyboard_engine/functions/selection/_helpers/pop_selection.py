@@ -1,7 +1,9 @@
 from typing import List
-from src import KeyboardMemory, leave_selection_mode, Placeholder, TreeNode
-from src._helpers.first_before_or_none import first_before_or_none
+
+from src import KeyboardMemory, Placeholder, TreeNode, leave_selection_mode
 from src._helpers.coalesce import coalesce
+from src._helpers.first_before_or_none import first_before_or_none
+
 
 def pop_selection(k: KeyboardMemory) -> List[TreeNode]:
   if k.selection_diff is None:

@@ -1,10 +1,12 @@
 from typing import Union
+
 from src import BranchingNode, KeyboardMemory, PartOfNumberWithDigits, Placeholder, TreeNode
+from src._helpers.coalesce import coalesce
+from src._helpers.first_before_or_none import first_before_or_none
+from src._helpers.last_or_none import last_or_none
 from src.keyboard_engine.functions._helpers.encapsulate_all_parts_of_number_with_digits_left_of_index import encapsulate_all_parts_of_number_with_digits_left_of_index
 from src.keyboard_engine.functions._helpers.get_first_non_empty_on_left_of import get_first_non_empty_on_left_of
-from src._helpers.last_or_none import last_or_none
-from src._helpers.first_before_or_none import first_before_or_none
-from src._helpers.coalesce import coalesce
+
 
 def delete_current(k: KeyboardMemory) -> None:
   if isinstance(k.current, Placeholder):

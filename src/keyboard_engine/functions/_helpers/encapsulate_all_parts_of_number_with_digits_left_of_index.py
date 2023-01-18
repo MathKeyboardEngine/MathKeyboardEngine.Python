@@ -1,5 +1,7 @@
 from typing import List
-from src import TreeNode, PartOfNumberWithDigits, Placeholder
+
+from src import PartOfNumberWithDigits, Placeholder, TreeNode
+
 
 def encapsulate_all_parts_of_number_with_digits_left_of_index(exclusive_right_index: int, sibling_nodes: List[TreeNode], to_placeholder: Placeholder) -> None:
   for i in range(exclusive_right_index - 1, -1, -1):

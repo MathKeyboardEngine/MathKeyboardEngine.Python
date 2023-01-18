@@ -1,5 +1,6 @@
-from src import KeyboardMemory, insert, DigitNode, get_edit_mode_latex, select_left, insert_with_encapsulate_selection, DescendingBranchingNode, enter_selection_mode
+from src import DescendingBranchingNode, DigitNode, KeyboardMemory, enter_selection_mode, get_edit_mode_latex, insert, insert_with_encapsulate_selection, select_left
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_TreeNode():
     # Arrange

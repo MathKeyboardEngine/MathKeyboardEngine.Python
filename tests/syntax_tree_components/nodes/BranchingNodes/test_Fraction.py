@@ -1,5 +1,6 @@
-from src import delete_current, KeyboardMemory, move_left, move_up, DescendingBranchingNode, get_edit_mode_latex, insert, insert_with_encapsulate_current, DigitNode, move_right, move_down
+from src import DescendingBranchingNode, DigitNode, KeyboardMemory, delete_current, get_edit_mode_latex, insert, insert_with_encapsulate_current, move_down, move_left, move_right, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_frac_left_right_right_right():
     k = KeyboardMemory()

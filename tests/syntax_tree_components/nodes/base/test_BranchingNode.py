@@ -1,5 +1,6 @@
-from src import BranchingNode, KeyboardMemory, LatexConfiguration, insert, move_up, move_down, get_edit_mode_latex, Placeholder
+from src import BranchingNode, KeyboardMemory, LatexConfiguration, Placeholder, get_edit_mode_latex, insert, move_down, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_calling_moveUp_or_moveDown_does_not_throw_even_if_not_implemented():
     k = KeyboardMemory()

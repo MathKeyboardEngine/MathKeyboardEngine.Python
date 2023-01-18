@@ -1,6 +1,8 @@
 import pytest
+
 from src import KeyboardMemory, enter_selection_mode
 from src.keyboard_engine.functions.selection._helpers.pop_selection import pop_selection
+
 
 def test_throws_if_not_inSelectionMode():
   with pytest.raises(Exception) as ex:

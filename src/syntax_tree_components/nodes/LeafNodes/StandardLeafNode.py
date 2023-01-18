@@ -1,5 +1,7 @@
 from typing import Callable, Union
+
 from src import KeyboardMemory, LatexConfiguration, LeafNode
+
 
 class StandardLeafNode(LeafNode):
   def __init__(self, latex: Union[str, Callable[[], str]]) -> None:

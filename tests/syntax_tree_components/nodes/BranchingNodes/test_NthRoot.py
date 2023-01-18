@@ -1,5 +1,6 @@
-from src import KeyboardMemory, DescendingBranchingNode, DigitNode, insert, get_edit_mode_latex,move_right, move_up, move_down
+from src import DescendingBranchingNode, DigitNode, KeyboardMemory, get_edit_mode_latex, insert, move_down, move_right, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_basic_test():
     k = KeyboardMemory()

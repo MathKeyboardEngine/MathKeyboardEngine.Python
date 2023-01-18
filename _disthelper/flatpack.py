@@ -1,9 +1,10 @@
-import shutil
 import glob
 import os
-from os import path
+import shutil
 from codecs import open
+from os import path
 from typing import List, Optional
+
 
 def flatpack(
     src_folder : str,
@@ -37,7 +38,9 @@ def flatpack(
                 lines = src_file.read().splitlines()
                 with open(dest_filepath, "x", encoding='utf-8') as destination_file:
                     for line in lines:
-                        if (line.startswith('from ' + src_folder)):
+                        if (line.startswith('from ' + src_folder + ' import ')):
+                            destination_file.write('from ' + destination_namespace + ' import ' + line.split(' import ')[-1] + '\n')
+                        elif (line.startswith('from ' + src_folder)):
                             modules = [m.strip() for m in line.split(' import ')[-1].split(',')]
                             for module in modules:
                                 destination_file.write('from ' + (destination_namespace + '.' + helpers_path_component if helpers_path_component in line else destination_namespace) + '.' + module + ' import ' + module + '\n')

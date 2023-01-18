@@ -1,5 +1,6 @@
-from src import insert, DecimalSeparatorNode, DigitNode, KeyboardMemory, get_edit_mode_latex
+from src import DecimalSeparatorNode, DigitNode, KeyboardMemory, get_edit_mode_latex, insert
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_allows_customizing_the_decimal_separator_even_if_it_is_already_in_the_KeyboardMemory_s_syntaxt_tree():
     # Arrange

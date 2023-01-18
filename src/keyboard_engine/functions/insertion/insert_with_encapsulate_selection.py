@@ -1,6 +1,7 @@
-from src import BranchingNode, insert, KeyboardMemory, move_right
+from src import BranchingNode, KeyboardMemory, insert, move_right
 from src.keyboard_engine.functions._helpers.encapsulate import encapsulate
 from src.keyboard_engine.functions.selection._helpers.pop_selection import pop_selection
+
 
 def insert_with_encapsulate_selection(k: KeyboardMemory, new_node: BranchingNode) -> None:
   selection = pop_selection(k)

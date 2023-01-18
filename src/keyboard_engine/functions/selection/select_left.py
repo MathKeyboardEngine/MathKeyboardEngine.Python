@@ -2,6 +2,7 @@ from src import KeyboardMemory, Placeholder, TreeNode
 from src._helpers.coalesce import coalesce
 from src.keyboard_engine.functions.selection._helpers.set_selection_diff import set_selection_diff
 
+
 def select_left(k: KeyboardMemory) -> None:
   old_diff_with_current = coalesce(k.selection_diff, 0)
   if (

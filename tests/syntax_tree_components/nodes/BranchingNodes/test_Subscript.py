@@ -1,5 +1,6 @@
-from src import KeyboardMemory, DescendingBranchingNode, StandardLeafNode, DigitNode, insert, move_right, move_down, move_up, move_left, insert_with_encapsulate_current, get_edit_mode_latex
+from src import DescendingBranchingNode, DigitNode, KeyboardMemory, StandardLeafNode, get_edit_mode_latex, insert, insert_with_encapsulate_current, move_down, move_left, move_right, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_subscript_a_right_4():
     k = KeyboardMemory()

@@ -1,5 +1,7 @@
 from typing import List
+
 from src import Placeholder, TreeNode
+
 
 def encapsulate(nodes: List[TreeNode], encapsulating_placeholder: Placeholder) -> None:
   for node in nodes:

@@ -1,5 +1,7 @@
 from typing import Callable, Union
+
 from src import KeyboardMemory, LatexConfiguration, PartOfNumberWithDigits
+
 
 class DecimalSeparatorNode(PartOfNumberWithDigits):
   def __init__(self, latex: Union[str, Callable[[], str]] = '.') -> None:

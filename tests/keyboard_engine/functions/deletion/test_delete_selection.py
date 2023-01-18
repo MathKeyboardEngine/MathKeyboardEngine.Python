@@ -1,5 +1,6 @@
-from src import KeyboardMemory, insert, DigitNode, get_edit_mode_latex, select_left, delete_selection, move_left, select_right
+from src import DigitNode, KeyboardMemory, delete_selection, get_edit_mode_latex, insert, move_left, select_left, select_right
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_can_delete_a_single_TreeNode_when_the_exclusive_left_border_is_a_TreeNode():
     # Arrange

@@ -1,5 +1,7 @@
 from typing import Union
+
 from src import Placeholder, TreeNode
+
 
 class KeyboardMemory:
   def __init__(self) -> None:

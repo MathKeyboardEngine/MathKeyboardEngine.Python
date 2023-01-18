@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class LatexConfiguration:
   def __init__(self):
     self.active_placeholder_shape : str = r'\blacksquare'

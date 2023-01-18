@@ -1,8 +1,10 @@
-import shutil
-from setuptools import setup
-from codecs import open
 import os
+import shutil
+from codecs import open
 from os import path
+
+from setuptools import setup
+
 from _disthelper.flatpack import flatpack
 
 for dir in ['dist', 'mathkeyboardengine.egg-info', 'build']:
