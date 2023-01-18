@@ -12,17 +12,19 @@ def test_does_a_regular_insert_if_current_is_a_Placeholder():
     # Assert
     assert '▦^{⬚}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_can_encapsulate_complex_stuff_like_matrixes():
     # Arrange
     k = KeyboardMemory()
     insert(k, MatrixNode('pmatrix', 2, 2))
     for i in range(1, 5):
-      insert(k, DigitNode(str(i)))
-      move_right(k)
+        insert(k, DigitNode(str(i)))
+        move_right(k)
     # Act
     insert_with_encapsulate_current(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     # Assert
     assert r'\frac{\begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix}}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_can_also_be_used_inside__for_example__a_matrix():
     # Arrange
@@ -45,6 +47,7 @@ def test_can_encapsulate_multiple_digits():
     # Assert
     assert r'\frac{12}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_can_encapsulate_a_decimal_number():
     # Arrange
     k = KeyboardMemory()
@@ -57,6 +60,7 @@ def test_can_encapsulate_a_decimal_number():
     # Assert
     assert r'\frac{12.3}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_does_not_encapsulate_more_than_it_should():
     # Arrange
     k = KeyboardMemory()
@@ -67,7 +71,8 @@ def test_does_not_encapsulate_more_than_it_should():
     # Act
     insert_with_encapsulate_current(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     # Assert
-    assert r'1+\frac{23}{▦}'== get_edit_mode_latex(k, UnitTestLatexConfiguration())
+    assert r'1+\frac{23}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_can_encapsulate_round_brackets():
     # Arrange
@@ -86,6 +91,7 @@ def test_can_encapsulate_round_brackets():
     # Assert
     assert r'1+(2+3)^{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     assert power_node.placeholders[0].get_latex(k, None) == '(2+3)'
+
 
 def test_with_deleteOuterRoundBracketsIfAny__deletes_outer_round_brackets_during_encapsulation():
     # Arrange
@@ -110,6 +116,7 @@ def test_with_deleteOuterRoundBracketsIfAny__deletes_outer_round_brackets_during
     # Assert
     assert r'1+\frac{(x+2)(x-3)}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_with_deleteOuterRoundBracketsIfAny__does_not_delete_square_brackets_during_encapsulation():
     # Arrange
     k = KeyboardMemory()
@@ -126,6 +133,7 @@ def test_with_deleteOuterRoundBracketsIfAny__does_not_delete_square_brackets_dur
     # Assert
     assert r'1+\frac{|x+3|}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     assert fraction.placeholders[0].get_latex(k, None) == '|x+3|'
+
 
 def test_with_deleteOuterRoundBracketsIfAny__encapsulation_by_single_placeholder_BranchingNode_sets_the_cursor_at_the_right_of__the_new_BranchingNode():
     # Arrange

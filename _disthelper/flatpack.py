@@ -6,16 +6,11 @@ from os import path
 from typing import List, Optional
 
 
-def flatpack(
-    src_folder : str,
-    destination_namespace : str, 
-    helpers_path_component : str = '_helpers', 
-    src_tests_folder : Optional[str] = None
-) -> List[str]:
+def flatpack(src_folder: str, destination_namespace: str, helpers_path_component: str = '_helpers', src_tests_folder: Optional[str] = None) -> List[str]:
     if any(('/' in arg or '.' in arg) for arg in [src_folder, destination_namespace, helpers_path_component]):
         raise Exception("The symbols '/' and '.' are disallowed by flatpack.")
-    
-    print("flatpack: start")
+
+    print('flatpack: start')
     print("flatpack: creating '" + destination_namespace + "'.")
     collected_modules = []
     collected_helper_modules = []
@@ -25,22 +20,22 @@ def flatpack(
     os.mkdir(path.join(destination_namespace, helpers_path_component))
     for srcfilepath in glob.glob(src_folder + '/**/*.py', recursive=True):
         filename = path.basename(srcfilepath)
-        if (filename != '__init__.py'):
+        if filename != '__init__.py':
             module_name = path.splitext(filename)[0]
             is_helper_module = helpers_path_component in srcfilepath
             if is_helper_module:
                 collected_helper_modules.append(module_name)
             else:
                 collected_modules.append(module_name)
-            
+
             dest_filepath = path.join(destination_namespace, filename) if not is_helper_module else path.join(destination_namespace, helpers_path_component, filename)
             with open(srcfilepath, encoding='utf-8') as src_file:
                 lines = src_file.read().splitlines()
-                with open(dest_filepath, "x", encoding='utf-8') as destination_file:
+                with open(dest_filepath, 'x', encoding='utf-8') as destination_file:
                     for line in lines:
-                        if (line.startswith('from ' + src_folder + ' import ')):
+                        if line.startswith('from ' + src_folder + ' import '):
                             destination_file.write('from ' + destination_namespace + ' import ' + line.split(' import ')[-1] + '\n')
-                        elif (line.startswith('from ' + src_folder)):
+                        elif line.startswith('from ' + src_folder):
                             modules = [m.strip() for m in line.split(' import ')[-1].split(',')]
                             for module in modules:
                                 destination_file.write('from ' + (destination_namespace + '.' + helpers_path_component if helpers_path_component in line else destination_namespace) + '.' + module + ' import ' + module + '\n')
@@ -58,9 +53,9 @@ def flatpack(
                 init_module = line.split(' ')[-1]
                 dest_root_init.write('from .' + init_module + ' import ' + init_module + '\n')
     if len(collected_helper_modules) > 0:
-        with open(path.join(destination_namespace, helpers_path_component, '__init__.py'), "x", encoding='utf-8') as dest_helpers_init:
+        with open(path.join(destination_namespace, helpers_path_component, '__init__.py'), 'x', encoding='utf-8') as dest_helpers_init:
             dest_helpers_init.write('')
-    
+
     if src_tests_folder is None:
         print("flatpack: skip creating tests because 'src_tests_folder' is not provided.")
     else:
@@ -74,15 +69,15 @@ def flatpack(
         for srctestfilepath in glob.glob(src_tests_folder + '/**/*.*', recursive=True):
             desttestfilepath = os.path.join(flatpack_tests_folder, os.path.relpath(srctestfilepath, (src_tests_folder)))
             filename = path.basename(srctestfilepath)
-            directories = desttestfilepath[:-len(filename)]
+            directories = desttestfilepath[: -len(filename)]
             if not os.path.exists(directories):
                 os.makedirs(directories)
             if srctestfilepath.endswith('.py'):
                 with open(srctestfilepath, encoding='utf-8') as srctest_file:
                     lines = srctest_file.read().splitlines()
-                    with open(desttestfilepath, "x", encoding='utf-8') as destination_file:
+                    with open(desttestfilepath, 'x', encoding='utf-8') as destination_file:
                         for line in lines:
-                            if (line.startswith('from ' + src_folder)):
+                            if line.startswith('from ' + src_folder):
                                 if helpers_path_component in line:
                                     modules = [m.strip() for m in line.split(' import ')[-1].split(',')]
                                     for module in modules:

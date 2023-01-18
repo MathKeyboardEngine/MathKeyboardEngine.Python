@@ -15,6 +15,7 @@ def test_can_delete_a_single_TreeNode_when_the_exclusive_left_border_is_a_TreeNo
     # Assert
     assert '1▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_can_delete_a_single_TreeNode_when_the_exclusive_left_border_is_a_Placeholder():
     # Arrange
     k = KeyboardMemory()
@@ -26,6 +27,7 @@ def test_can_delete_a_single_TreeNode_when_the_exclusive_left_border_is_a_Placeh
     delete_selection(k)
     # Assert
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_can_delete_multiple_TreeNodes_when_the_exclusive_left_border_is_a_TreeNode__via_selectLeft():
     # Arrange
@@ -41,6 +43,7 @@ def test_can_delete_multiple_TreeNodes_when_the_exclusive_left_border_is_a_TreeN
     delete_selection(k)
     # Assert
     assert '1▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_can_delete_multiple_TreeNodes_when_the_exclusive_left_border_is_a_TreeNode__via_selectRight():
     # Arrange
@@ -59,6 +62,7 @@ def test_can_delete_multiple_TreeNodes_when_the_exclusive_left_border_is_a_TreeN
     # Assert
     assert '1▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_can_delete_multiple_TreeNodes_when_the_exclusive_left_border_is_a_Placeholder__via_selectLeft():
     # Arrange
     k = KeyboardMemory()
@@ -72,6 +76,7 @@ def test_can_delete_multiple_TreeNodes_when_the_exclusive_left_border_is_a_Place
     delete_selection(k)
     # Assert
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_can_delete_multiple_TreeNodes_when_the_exclusive_left_border_is_a_Placeholder__via_selectRight():
     # Arrange

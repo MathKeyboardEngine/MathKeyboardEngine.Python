@@ -10,6 +10,7 @@ def test_subscript_a_right_4():
     insert(k, DigitNode('4'))
     assert 'a_{4▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_subscript_a_down_4():
     k = KeyboardMemory()
     insert(k, DescendingBranchingNode('', '_{', '}'))
@@ -18,11 +19,13 @@ def test_subscript_a_down_4():
     insert(k, DigitNode('4'))
     assert 'a_{4▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_insertWithEncapsulateCurrent():
     k = KeyboardMemory()
     insert(k, StandardLeafNode('a'))
     insert_with_encapsulate_current(k, DescendingBranchingNode('', '_{', '}'))
     assert 'a_{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_subscript_a_down_4_up():
     k = KeyboardMemory()
@@ -32,6 +35,7 @@ def test_subscript_a_down_4_up():
     insert(k, DigitNode('4'))
     move_up(k)
     assert 'a▦_{4}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_can_be_left_empty__moving_out_and_back_in():
     # Arrange
@@ -43,6 +47,7 @@ def test_can_be_left_empty__moving_out_and_back_in():
     assert '▦⬚_{⬚}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     move_right(k)
     assert '▦_{⬚}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_impossible_updown_requests_in_empty_node_should_not_throw():
     # Arrange
@@ -58,6 +63,7 @@ def test_impossible_updown_requests_in_empty_node_should_not_throw():
     # Act & Assert 2
     move_down(k)
     assert '⬚_{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_impossible_updown_requests_in_filled_subscriptNode_should_not_throw():
     # Arrange

@@ -3,4 +3,4 @@ from src.keyboard_engine.functions.selection._helpers.set_selection_diff import 
 
 
 def enter_selection_mode(k: KeyboardMemory) -> None:
-  set_selection_diff(k, 0)
+    set_selection_diff(k, 0)

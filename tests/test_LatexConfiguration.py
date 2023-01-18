@@ -12,6 +12,7 @@ def test_allows_customizing_the_shape_of_the_cursor_and_empty_Placeholder():
     # Assert
     assert r'my_cursor^{my_empty_place}' == get_edit_mode_latex(k, config)
 
+
 def test_allows_customizing_the_color_of_the_cursorand_Placeholders():
     # Arrange
     k = KeyboardMemory()

@@ -16,6 +16,7 @@ def test_instert_prepends_if_current_is_a_Placeholder():
     # Assert
     assert '2▦1' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_inserts_at_the_right_of_a_TreeNode_if_current_is_a_TreeNode():
     # Arrange
     k = KeyboardMemory()
@@ -36,6 +37,7 @@ def test_inserts_at_the_right_of_a_TreeNode_if_current_is_a_TreeNode():
     # Assert 2
     assert '13▦2' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_sets_the_parentPlaceholder():
     # Arrange
     k = KeyboardMemory()
@@ -45,6 +47,7 @@ def test_sets_the_parentPlaceholder():
     insert(k, node)
     # Assert
     assert node.parent_placeholder is not None
+
 
 def test_sets_current():
     # Arrange

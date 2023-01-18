@@ -17,6 +17,7 @@ def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_T
     # Assert
     assert '2^{3▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_Placeholder():
     # Arrange
     k = KeyboardMemory()
@@ -28,6 +29,7 @@ def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_P
     insert_with_encapsulate_selection_and_previous(k, AscendingBranchingNode('', '^{', '}'))
     # Assert
     assert '⬚^{2▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a_TreeNode():
     # Arrange
@@ -44,6 +46,7 @@ def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a
     # Assert
     assert '2^{10▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a_Placeholder():
     # Arrange
     k = KeyboardMemory()
@@ -58,6 +61,7 @@ def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a
     # Assert
     assert '⬚^{12▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_invokes_insertWithEncapsulateCurrent_if_inSelectionMode_but_nothing_selected():
     # Arrange
     k = KeyboardMemory()
@@ -71,6 +75,7 @@ def test_invokes_insertWithEncapsulateCurrent_if_inSelectionMode_but_nothing_sel
     insert_with_encapsulate_selection_and_previous(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     # Assert
     assert r'1+\frac{12}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_throws_on_inserting_BranchingNode_with_single_Placeholder():
     with pytest.raises(Exception) as ex:

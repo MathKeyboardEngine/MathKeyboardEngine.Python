@@ -15,6 +15,7 @@ def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_T
     # Assert
     assert r'1\frac{2}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_Placeholder():
     # Arrange
     k = KeyboardMemory()
@@ -26,6 +27,7 @@ def test_when_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_P
     insert_with_encapsulate_selection(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     # Assert
     assert r'\frac{1}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a_TreeNode():
     # Arrange
@@ -42,6 +44,7 @@ def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a
     # Assert
     assert r'1\frac{23}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a_Placeholder():
     # Arrange
     k = KeyboardMemory()
@@ -55,6 +58,7 @@ def test_when_multiple_TreeNodes_are_selected_and_the_exclusive_left_border_is_a
     insert_with_encapsulate_selection(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     # Assert
     assert r'\frac{12}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_does_a_regular_insert_when_inSelectionMode_but_nothing_is_selected():
     # Arrange

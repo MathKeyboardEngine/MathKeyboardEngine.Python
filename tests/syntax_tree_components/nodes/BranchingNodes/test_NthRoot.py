@@ -13,6 +13,7 @@ def test_basic_test():
     insert(k, DigitNode('7'))
     assert r'\sqrt[3]{27▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_updown_including_impossible_updown_requests():
     k = KeyboardMemory()
     insert(k, DescendingBranchingNode(r'\sqrt[', ']{', '}'))

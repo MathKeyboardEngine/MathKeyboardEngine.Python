@@ -18,6 +18,7 @@ def test_sqrt_3_right_left_left_left_right():
     move_right(k)
     assert r'\sqrt{▦3}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_sqrt_right_left_left_right():
     k = KeyboardMemory()
     insert(k, StandardBranchingNode(r'\sqrt{', '}'))
@@ -30,6 +31,7 @@ def test_sqrt_right_left_left_right():
     assert r'▦\sqrt{⬚}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     move_right(k)
     assert r'\sqrt{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_sqrt_del():
     k = KeyboardMemory()

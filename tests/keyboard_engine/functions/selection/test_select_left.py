@@ -13,6 +13,7 @@ def test_can_select_a_single_TreeNode_and_the_selection_is_correctly_displayed__
     # Assert
     assert r'1\colorbox{blue}{2}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_can_select_a_single_TreeNode_and_the_selection_is_correctly_displayed__case__the_exclusive_left_border_is_a_Placeholder():
     # Arrange
     k = KeyboardMemory()
@@ -22,6 +23,7 @@ def test_can_select_a_single_TreeNode_and_the_selection_is_correctly_displayed__
     select_left(k)
     # Assert
     assert r'\colorbox{blue}{1}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_can_select_multiple_TreeNodes_and_the_selection_is_correctly_displayed__case__the_exclusive_left_border_is_a_TreeNode():
     # Arrange
@@ -36,6 +38,7 @@ def test_can_select_multiple_TreeNodes_and_the_selection_is_correctly_displayed_
     # Assert
     assert r'1\colorbox{blue}{23}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_can_select_multiple_TreeNodes_and_the_selection_is_correctly_displayed__case__the_exclusive_left_border_is_a_Placeholder():
     # Arrange
     k = KeyboardMemory()
@@ -47,6 +50,7 @@ def test_can_select_multiple_TreeNodes_and_the_selection_is_correctly_displayed_
     select_left(k)
     # Assert
     assert r'\colorbox{blue}{12}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_does_nothing_if_current_is_the_syntaxTreeRoot_and_no_selectRight_has_been_done():
     # Arrange
@@ -60,6 +64,7 @@ def test_does_nothing_if_current_is_the_syntaxTreeRoot_and_no_selectRight_has_be
     # Assert
     assert '▦1' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
+
 def test_does_nothing_if_all_on_the_left_available_TreeNodes_are_selected():
     # Arrange
     k = KeyboardMemory()
@@ -70,6 +75,7 @@ def test_does_nothing_if_all_on_the_left_available_TreeNodes_are_selected():
     select_left(k)
     # Assert
     assert r'\colorbox{blue}{1}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
 
 def test_stays_in_selection_mode_after_deselecting():
     # Arrange
@@ -83,6 +89,7 @@ def test_stays_in_selection_mode_after_deselecting():
     # Assert
     assert '▦1' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
     assert in_selection_mode(k)
+
 
 def test_can_break_out_of_the_current_Placeholder():
     # Arrange

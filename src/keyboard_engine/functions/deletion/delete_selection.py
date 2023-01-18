@@ -3,4 +3,4 @@ from src.keyboard_engine.functions.selection._helpers.pop_selection import pop_s
 
 
 def delete_selection(k: KeyboardMemory) -> None:
-  pop_selection(k)
+    pop_selection(k)
