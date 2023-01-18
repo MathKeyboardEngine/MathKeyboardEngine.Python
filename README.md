@@ -22,7 +22,7 @@ Also available:
  
 Live (JavaScript) examples can be tested at [MathKeyboardEngine.GitHub.io](https://mathkeyboardengine.github.io).
 
-A Python example for the PyQt6 GUI framework can be found in the [examples](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) folder. Note that the Python example is limited, because it does not handle physical keyboard input.
+A Python example for the PyQt6 GUI framework can be found in the [examples](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) folder. Note that the Python example is limited, because it does not handle physical keyboard input. Also, there are many more GUI frameworks for which there is no example. The PyQt6 example might provide insight in how to use mathkeyboardengine in any project.
 
 #### Pros and cons?
 
@@ -45,44 +45,42 @@ A Python example for the PyQt6 GUI framework can be found in the [examples](http
 
 ## How to use this library
 
-This library has been distributed via [PyPi](https://pypi.org/project/mathkeyboardengine/).
-
 Install [Python](https://www.python.org/downloads/) and [VS Code](https://code.visualstudio.com).
 
-For installing a specific version of mathkeyboardengine - for example `0.1.0-alpha.12` - run the following command in the `VS Code` Terminal:
+Run the following command in the `VS Code` Terminal:
 ```
-py -m pip install mathkeyboardengine==0.1.0a12
+py -m pip install --upgrade mathkeyboardengine
 ```
-Then create a new folder 'MathKeyboardEngineTest' and open it in `VS Code`. Add a file `main.py` with the following content:
+Then use
 ```py
 from mathkeyboardengine import *
 
 k = KeyboardMemory()
 latexconfiguration = LatexConfiguration()
 
-insert(k, DigitNode('2'))
-insert_with_encapsulate_current(k, AscendingBranchingNode('', '^{', '}'))
-insert(k, StandardLeafNode('x'))
+# subscribe to button click events of virtual key presses, etc.
+```
+or
+```py
+import mathkeyboardengine as mke
 
-print(get_edit_mode_latex(k, latexconfiguration))
-```
-Press the play button in the upper-right corner of `VS Code`. The result that is displayed in the Terminal:
-```
-2^{x\blacksquare}
+k = mke.KeyboardMemory()
+latexconfiguration = mke.LatexConfiguration()
 ```
 
 ## Documentation
 
-todo. For now, see the JavaScript repo.
+Visit the [documentation](https://mathkeyboardengine.github.io/docs/python/0.1/) and the [examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) for more implementation details.
+
 
 ## How to use this repo
 
 Follow these steps to set up (and verify) a development environment for this repository:
 
 1. Install the latest version of Python via [https://www.python.org/downloads](https://www.python.org/downloads/). The download includes `pip`.
-1. Open the Terminal in VS Code and run<br/>`py -m pip install -U pytest`.
+1. Open the Terminal in VS Code and run<br/>`py -m pip install --upgrade pytest`.
 1. Run all tests via<br/>`py -m pytest tests/`.
-1. See code coverage:<br/>`py -m pip install pytest-cov`<br/>`py -m pytest tests/ --cov=src --cov-report term-missing`.
+1. See code coverage:<br/>`py -m pip install --upgrade pytest-cov`<br/>`py -m pytest tests/ --cov=src --cov-report term-missing`.
 1. This repository has been developed in a folder structure that helps understanding it. The released package however has a "flat" structure, so that all imports can be done from a single namespace. This is done via [_disthelper/flatpack.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/_disthelper/flatpack.py) (developed especially for this repository). Files from the [src](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/src) folder are recursively copied to a new folder 'mathkeyboardengine' and import statements are automatically updated. It also produces a new version of the tests folder. It is called in [setup.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/setup.py) and [noxfile.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/noxfile.py).
 1. Run all tests for the flatpacked mathkeyboardengine for multiple versions of python :<br/>`py -m pip install --upgrade nox`<br/>`py -m nox` (this uses [`noxfile.py`](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/noxfile.py) from the root of the repository).
 1. If you're interested the release steps, see [`_disthelper/release_steps.txt`](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/_disthelper/release_steps.txt).

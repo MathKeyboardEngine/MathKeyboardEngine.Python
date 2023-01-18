@@ -1,13 +1,20 @@
 == Release steps ==
 
+> install
+py -m pip install --upgrade isort
+py -m pip install --upgrade blue
+py -m pip install --upgrade wheel
+py -m pip install --upgrade twine
+py -m pip install --upgrade nox
+
 > save and close all open documents except this one.
+
+> fix namespace import order and code style formatting:
+py -m isort . --skip ('__init__.py') --line-length 999
+py -m blue . --line-length 400
 
 > verify that the test coverage is 100%, that the tests of the flatpacked version of mathkeyboardengine pass all versions of Python:
 py -m nox
-
-> install if not already done:
-py -m pip install wheel
-py -m pip install twine
 
 > in setup.py, increment the version="0.1.0-alpha.?", then run:
 py setup.py sdist bdist_wheel
