@@ -17,7 +17,7 @@ with open(path.join(root_dir, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='mathkeyboardengine',
-    version='0.1.0-alpha.24',
+    version='0.1.0',
     description='MathKeyboardEngine provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library.',
     long_description=long_description,
     long_description_content_type='text/markdown',
