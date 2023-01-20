@@ -69,31 +69,13 @@ class ExampleWindow(QMainWindow):
         for i in range(0, len(greek_letters)):
             self.register_node_key(row=3, col=i + 8, img_name=greek_letters[i], node_getter=partial(StandardLeafNode, '\\' + greek_letters[i]))
 
-        def get_binom():
-            return DescendingBranchingNode(r'\binom{', '}{', '}')
-
-        self.register_node_key(row=4, col=0, img_name='binom', node_getter=get_binom, onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection)
-
-        def get_frac():
-            return DescendingBranchingNode(r'\frac{', '}{', '}')
-
-        self.register_node_key(row=4, col=1, img_name='frac', node_getter=get_frac, onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection)
-
-        def get_power():
-            return AscendingBranchingNode('', '^{', '}')
-
-        self.register_node_key(row=4, col=2, img_name='power', node_getter=get_power, onclick_func_for_keyboardmemory_and_node=insert_with_encapsulate_current, onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection_and_previous)
-
-        def get_subscript():
-            return DescendingBranchingNode('', '_{', '}')
-
-        self.register_node_key(row=4, col=3, img_name='subscript', node_getter=get_subscript, onclick_func_for_keyboardmemory_and_node=insert_with_encapsulate_current, onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection_and_previous)
-
-        def get_sqrt():
-            return StandardBranchingNode(r'\sqrt{', '}')
-
-        self.register_node_key(row=4, col=4, img_name='sqrt', node_getter=get_sqrt, onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection)
+        self.register_node_key(row=4, col=0, img_name='binom', node_getter=lambda: DescendingBranchingNode(r'\binom{', '}{', '}'), onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection)
+        self.register_node_key(row=4, col=1, img_name='frac', node_getter=lambda: DescendingBranchingNode(r'\frac{', '}{', '}'), onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection)
+        self.register_node_key(row=4, col=2, img_name='power', node_getter=lambda: AscendingBranchingNode('', '^{', '}'), onclick_func_for_keyboardmemory_and_node=insert_with_encapsulate_current, onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection_and_previous)
+        self.register_node_key(row=4, col=3, img_name='subscript', node_getter=lambda: DescendingBranchingNode('', '_{', '}'), onclick_func_for_keyboardmemory_and_node=insert_with_encapsulate_current, onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection_and_previous)
+        self.register_node_key(row=4, col=4, img_name='sqrt', node_getter=lambda: StandardBranchingNode(r'\sqrt{', '}'), onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection)
         self.register_node_key(row=4, col=5, img_name='nthroot', node_getter=lambda: StandardBranchingNode(r'\sqrt[', ']{', '}'))
+
         self.register_node_key(row=4, col=7, img_name='pm', node_getter=lambda: StandardLeafNode(r'\pm'))
         self.register_node_key(row=4, col=8, img_name='plus', node_getter=lambda: StandardLeafNode('+'))
         self.register_node_key(row=4, col=9, img_name='minus', node_getter=lambda: StandardLeafNode('-'))
@@ -103,26 +85,10 @@ class ExampleWindow(QMainWindow):
         self.register_node_key(row=4, col=13, img_name='faculty', node_getter=lambda: StandardLeafNode('!'))
 
         self.register_node_key(row=5, col=0, img_name='roundbrackets', node_getter=lambda: RoundBracketsNode(), onclick_selection_mode_func_for_keyboardmemory_and_node=insert_with_encapsulate_selection)
-
-        def get_squarebrackets():
-            return StandardBranchingNode(r'\left[', r'\right]')
-
-        self.register_node_key(row=5, col=1, img_name='squarebrackets', node_getter=get_squarebrackets)
-
-        def get_curlybraces():
-            return StandardBranchingNode(r'\left\{', r'\right\}')
-
-        self.register_node_key(row=5, col=2, img_name='curlybraces', node_getter=get_curlybraces)
-
-        def get_pipes():
-            return StandardBranchingNode(r'\left|', r'\right|')
-
-        self.register_node_key(row=5, col=3, img_name='pipes', node_getter=get_pipes)
-
-        def get_doublepipes():
-            return StandardBranchingNode(r'\left\|', r'\right\|')
-
-        self.register_node_key(row=5, col=4, img_name='doublepipes', node_getter=get_doublepipes)
+        self.register_node_key(row=5, col=1, img_name='squarebrackets', node_getter=lambda: StandardBranchingNode(r'\left[', r'\right]'))
+        self.register_node_key(row=5, col=2, img_name='curlybraces', node_getter=lambda: StandardBranchingNode(r'\left\{', r'\right\}'))
+        self.register_node_key(row=5, col=3, img_name='pipes', node_getter=lambda: StandardBranchingNode(r'\left|', r'\right|'))
+        self.register_node_key(row=5, col=4, img_name='doublepipes', node_getter=lambda: StandardBranchingNode(r'\left\|', r'\right\|'))
 
         self.matrix_height = QComboBox()
         self.matrix_height.addItems(['1', '2', '3', '4', '5'])
@@ -134,10 +100,7 @@ class ExampleWindow(QMainWindow):
         self.matrix_width.setCurrentIndex(1)
         self.matrix_width.setStyleSheet('background-color: #FFF')
 
-        def get_matrix():
-            return MatrixNode('pmatrix', self.matrix_width.currentIndex() + 1, self.matrix_height.currentIndex() + 1)
-
-        self.register_node_key(row=4, col=6, img_name='pmatrix', node_getter=get_matrix, hex_color='#FFF')
+        self.register_node_key(row=4, col=6, img_name='pmatrix', node_getter=lambda: MatrixNode('pmatrix', self.matrix_width.currentIndex() + 1, self.matrix_height.currentIndex() + 1), hex_color='#FFF')
         self.gridLayout.addWidget(self.matrix_width, 5, 5)
         self.gridLayout.addWidget(self.matrix_height, 5, 6)
 
@@ -167,7 +130,7 @@ class ExampleWindow(QMainWindow):
         self.register_node_key(row=7, col=0, img_name='infty', node_getter=lambda: StandardLeafNode(r'\infty'))
         self.register_node_key(row=7, col=1, img_name='integral', node_getter=lambda: AscendingBranchingNode(r'\int_{', '}^{', '}'))
         self.register_node_key(row=7, col=2, img_name='sum', node_getter=lambda: AscendingBranchingNode(r'\sum_{', '}^{', '}'))
-        self.register_node_key(row=7, col=3, img_name='prod', node_getter=lambda: DescendingBranchingNode(r'\prod_{', '}'))
+        self.register_node_key(row=7, col=3, img_name='prod', node_getter=lambda: DescendingBranchingNode(r'\prod_{', '}^{', '}'))
         self.register_node_key(row=7, col=4, img_name='lim', node_getter=lambda: DescendingBranchingNode(r'\lim_{', '}'))
         self.register_node_key(row=7, col=5, img_name='rightarrow', node_getter=lambda: StandardLeafNode(r'\rightarrow'))
         self.register_node_key(row=7, col=6, img_name='uparrow', node_getter=lambda: StandardLeafNode(r'\uparrow'))

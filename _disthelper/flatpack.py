@@ -12,6 +12,8 @@ def flatpack(src_folder: str, destination_namespace: str, helpers_path_component
 
     print('flatpack: start')
     print("flatpack: creating '" + destination_namespace + "'.")
+    src_root_init_path = path.join(src_folder, '__init__.py')
+
     collected_modules = []
     collected_helper_modules = []
     if path.isdir(destination_namespace):
@@ -20,7 +22,12 @@ def flatpack(src_folder: str, destination_namespace: str, helpers_path_component
     os.mkdir(path.join(destination_namespace, helpers_path_component))
     for srcfilepath in glob.glob(src_folder + '/**/*.py', recursive=True):
         filename = path.basename(srcfilepath)
-        if filename != '__init__.py':
+        if filename == '__init__.py':
+            if srcfilepath != src_root_init_path:
+                with open(srcfilepath, 'r') as non_root_init:
+                    if non_root_init.read().strip() != '':
+                        raise Exception("Only the root '__init__.py' should contain imports. All other __init__.py files should be empty.")
+        else:
             module_name = path.splitext(filename)[0]
             is_helper_module = helpers_path_component in srcfilepath
             if is_helper_module:
@@ -31,6 +38,8 @@ def flatpack(src_folder: str, destination_namespace: str, helpers_path_component
             dest_filepath = path.join(destination_namespace, filename) if not is_helper_module else path.join(destination_namespace, helpers_path_component, filename)
             with open(srcfilepath, encoding='utf-8') as src_file:
                 lines = src_file.read().splitlines()
+                if not any((' ' + module_name) in line for line in lines):
+                    raise Exception("The file name should be the same as the defined function or class in the file, but '" + module_name + "' is not defined inside '" + srcfilepath + "'.")
                 with open(dest_filepath, 'x', encoding='utf-8') as destination_file:
                     for line in lines:
                         if line.startswith('from ' + src_folder + ' import '):
@@ -43,11 +52,15 @@ def flatpack(src_folder: str, destination_namespace: str, helpers_path_component
                             destination_file.write(line + '\n')
 
     with open(path.join(destination_namespace, '__init__.py'), 'x') as dest_root_init:
-        with open(path.join(src_folder, '__init__.py'), 'r') as src_root_init:
-            lines = src_root_init.read().strip().splitlines()
+        with open(src_root_init_path, 'r') as src_root_init:
+            src_root_init_content = src_root_init.read().strip()
+            if helpers_path_component in src_root_init_content:
+                raise Exception("The __init__.py from '" + src_folder + "' should not contain '" + helpers_path_component + "'.")
+            for module in collected_modules:
+                if (' import ' + module) not in src_root_init_content:
+                    raise Exception("The file '" + src_root_init_path + "' does not import '" + module + "'.")
+            lines = src_root_init_content.splitlines()
             for line in lines:
-                if helpers_path_component in line:
-                    raise Exception("The __init__.py from '" + src_folder + "' should not contain '" + helpers_path_component + "'.")
                 if not line.startswith('from ' + src_folder) or not ' import ' in line or ',' in line:
                     raise Exception("Each line in '" + src_folder + "/__init__.py' should start with 'from " + src_folder + "' and should contain a single import, which is not the case for '" + line + "'.")
                 init_module = line.split(' ')[-1]
