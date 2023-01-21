@@ -46,4 +46,4 @@ class KatexView(QWebEngineView):
         self.page().runJavaScript(KatexView.__katexRender(latex))
 
     def __katexRender(latex) -> str:
-        return 'window.typeSet(String.raw`' + latex + '`)'
+        return f'window.typeSet(String.raw`{latex}`)'

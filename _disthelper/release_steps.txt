@@ -10,7 +10,7 @@ py -m pip install --upgrade nox
 > save and close all open documents except this one.
 
 > fix namespace import order and code style formatting:
-py -m isort . --skip ('__init__.py') --line-length 999
+py -m isort . --skip '__init__.py' --skip '.nox' --line-length 999
 py -m blue . --line-length 400
 
 > verify that the test coverage is 100%, that the tests of the flatpacked version of mathkeyboardengine pass all versions of Python:
@@ -23,7 +23,8 @@ py setup.py sdist bdist_wheel
 py -m twine check dist/*
 py -m twine upload dist/*
 
-
+> create a git tag of the format 'v.0.1.1' / 'v0.1.1-alpha.2' via VS Code's history tab and push it:
+git push origin --tags
 
 
 == Manually testing the release ==

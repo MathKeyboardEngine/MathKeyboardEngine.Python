@@ -146,7 +146,7 @@ class ExampleWindow(QMainWindow):
         key = QPushButton()
         if onclick_selection_mode_func_for_keyboardmemory_and_node is not None:
             self.selection_mode_keys.append(key)
-        key.setIcon(QIcon('img/' + img_name + '.png'))
+        key.setIcon(QIcon(f'img/{img_name}.png'))
         key.setIconSize(QSize(35, 20))
         if hex_color is not None:
             key.setStyleSheet('background-color: ' + hex_color)
@@ -167,7 +167,7 @@ class ExampleWindow(QMainWindow):
     def register_key(self, key_or_imgname: Union[QPushButton, str], row, col, onclick_func_for_keyboardmemory, onclick_selection_mode_func_for_keyboardmemory=None, should_leave_selection_mode=True):
         key = key if isinstance(key_or_imgname, QPushButton) else QPushButton()
         if isinstance(key_or_imgname, str):
-            key.setIcon(QIcon('img/' + key_or_imgname + '.png'))
+            key.setIcon(QIcon(f'img/{key_or_imgname}.png'))
             key.setIconSize(QSize(35, 20))
         if onclick_selection_mode_func_for_keyboardmemory is not None:
             self.selection_mode_keys.append(key)

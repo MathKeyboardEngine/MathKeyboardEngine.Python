@@ -17,12 +17,11 @@ Also available:
 1. Calling `get_edit_mode_latex()` outputs the total of LaTeX you typed, for example `\frac{3}{4}\blacksquare` (if `\blacksquare` is your cursor), which you then feed to the typesetting library for display.
 1. Calling `get_view_mode_latex()` outputs the LaTeX without a cursor.
 
-
 #### Let me test it now!
  
-Live (JavaScript) examples can be tested at [MathKeyboardEngine.GitHub.io](https://mathkeyboardengine.github.io).
+Live (JavaScript) examples can be tested at [mathkeyboardengine.github.io](https://mathkeyboardengine.github.io).
 
-A Python example for the PyQt6 GUI framework can be found in the [examples](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) folder. Note that the Python example is limited, because it does not handle physical keyboard input. Also, there are many more GUI frameworks for which there is no example. The PyQt6 example might provide insight in how to use mathkeyboardengine in any project.
+A Python example for the PyQt6 GUI framework can be found in the [examples](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) folder. Note that the Python example is limited, because it does not handle physical keyboard input. Also, there are many more GUI frameworks for which there is no example. However, the PyQt6 example might provide insight in how to use MathKeyboardEngine in any project.
 
 #### Pros and cons?
 
@@ -42,6 +41,7 @@ A Python example for the PyQt6 GUI framework can be found in the [examples](http
 - customize the editor output at runtime: dot or comma as decimal separator, cross or dot for multiplication, cursor style, colors, etc.
 - this library also supports handling input from a physical keyboard, where - for example - the forward slash "/" key can be programmed to result in encapsulating a previously typed number as the numerator of a fraction. (See the examples.)
 - almost forgotten: it's open source, free to use, free to modify (please fork this repo)!
+
 
 ## How to use this library
 
@@ -67,10 +67,14 @@ import mathkeyboardengine as mke
 k = mke.KeyboardMemory()
 latexconfiguration = mke.LatexConfiguration()
 ```
+<i>Note: "mke" is an abbreviation of "MathKeyboardEngine". You can choose something different.</i>
+
 
 ## Documentation
 
-Visit the [documentation](https://mathkeyboardengine.github.io/docs/python/0.1/) and the [examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) for more implementation details.
+Visit the [documentation](https://mathkeyboardengine.github.io/docs/python/0.1/) and the (latest version of the)* [examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) for more implementation details.
+
+\* If you use a version tag in the url like this: https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/v0.1.0, you can see the git repository as it was for that version. That may not be needed if the [changelog](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/CHANGELOG.md) doesn't note any important changes.
 
 
 ## How to use this repo
@@ -84,6 +88,7 @@ Follow these steps to set up (and verify) a development environment for this rep
 1. This repository has been developed in a folder structure that helps understanding it. The released package however has a "flat" structure, so that all imports can be done from a single namespace. This is done via [_disthelper/flatpack.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/_disthelper/flatpack.py) (developed especially for this repository). Files from the [src](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/src) folder are recursively copied to a new folder 'mathkeyboardengine' and import statements are automatically updated. It also produces a new version of the tests folder. It is called in [setup.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/setup.py) and [noxfile.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/noxfile.py).
 1. Run all tests for the flatpacked mathkeyboardengine for multiple versions of python :<br/>`py -m pip install --upgrade nox`<br/>`py -m nox` (this uses [noxfile.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/noxfile.py) from the root of the repository).
 1. If you're interested the release steps, see [_disthelper/release_steps.txt](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/_disthelper/release_steps.txt).
+
 
 ## Ask or contribute
 
