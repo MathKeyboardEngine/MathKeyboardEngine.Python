@@ -130,7 +130,7 @@ class ExampleWindow(QMainWindow):
         self.register_node_key(row=7, col=0, img_name='infty', node_getter=lambda: StandardLeafNode(r'\infty'))
         self.register_node_key(row=7, col=1, img_name='integral', node_getter=lambda: AscendingBranchingNode(r'\int_{', '}^{', '}'))
         self.register_node_key(row=7, col=2, img_name='sum', node_getter=lambda: AscendingBranchingNode(r'\sum_{', '}^{', '}'))
-        self.register_node_key(row=7, col=3, img_name='prod', node_getter=lambda: DescendingBranchingNode(r'\prod_{', '}^{', '}'))
+        self.register_node_key(row=7, col=3, img_name='prod', node_getter=lambda: AscendingBranchingNode(r'\prod_{', '}^{', '}'))
         self.register_node_key(row=7, col=4, img_name='lim', node_getter=lambda: DescendingBranchingNode(r'\lim_{', '}'))
         self.register_node_key(row=7, col=5, img_name='rightarrow', node_getter=lambda: StandardLeafNode(r'\rightarrow'))
         self.register_node_key(row=7, col=6, img_name='uparrow', node_getter=lambda: StandardLeafNode(r'\uparrow'))
