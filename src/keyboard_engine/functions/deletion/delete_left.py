@@ -6,6 +6,7 @@ from src._helpers.first_before_or_none import first_before_or_none
 from src._helpers.last_or_none import last_or_none
 from src.keyboard_engine.functions._helpers.encapsulate_all_parts_of_number_with_digits_left_of_index import encapsulate_all_parts_of_number_with_digits_left_of_index
 from src.keyboard_engine.functions._helpers.get_first_non_empty_on_left_of import get_first_non_empty_on_left_of
+from src.keyboard_engine.functions.deletion._helpers.delete_outer_branching_node_but_not_its_contents import delete_outer_branching_node_but_not_its_contents
 
 
 def delete_left(k: KeyboardMemory) -> None:
@@ -16,7 +17,8 @@ def delete_left(k: KeyboardMemory) -> None:
             non_empty_placeholder_on_left: Union[Placeholder, None] = get_first_non_empty_on_left_of(k.current.parent_node.placeholders, k.current)
             if non_empty_placeholder_on_left:
                 if len(k.current.parent_node.placeholders) == 2 and k.current == k.current.parent_node.placeholders[1] and len(k.current.nodes) == 0:
-                    delete_outer_branching_node_but_not_its_contents(k, non_empty_placeholder_on_left)
+                    delete_outer_branching_node_but_not_its_contents(non_empty_placeholder_on_left)
+                    k.current = non_empty_placeholder_on_left.nodes[-1]
                 else:
                     non_empty_placeholder_on_left.nodes.pop()
                     k.current = coalesce(last_or_none(non_empty_placeholder_on_left.nodes), non_empty_placeholder_on_left)
@@ -42,7 +44,9 @@ def delete_left(k: KeyboardMemory) -> None:
                         k.current = nodes[-1]
     else:
         if isinstance(k.current, BranchingNode) and len(k.current.placeholders[0].nodes) > 0 and all(len(ph.nodes) == 0 for ph in k.current.placeholders[1:]):
-            delete_outer_branching_node_but_not_its_contents(k, k.current.placeholders[0])
+            non_empty_placeholder = k.current.placeholders[0]
+            delete_outer_branching_node_but_not_its_contents(non_empty_placeholder)
+            k.current = non_empty_placeholder.nodes[-1]
         elif isinstance(k.current, BranchingNode) and any(len(ph.nodes) > 0 for ph in k.current.placeholders):
             k.current = [node for ph in k.current.placeholders for node in ph.nodes][-1]
             delete_left(k)
@@ -59,12 +63,3 @@ def encapsulate_previous_into(previous_node: TreeNode, target_placeholder: Place
     previous_node.parent_placeholder = target_placeholder
     if isinstance(previous_node, PartOfNumberWithDigits):
         encapsulate_all_parts_of_number_with_digits_left_of_index(len(previous_node_old_parent_placeholder.nodes) - 1, previous_node_old_parent_placeholder.nodes, target_placeholder)
-
-
-def delete_outer_branching_node_but_not_its_contents(k: KeyboardMemory, non_empty_placeholder: Placeholder):
-    outer_branchingnode = non_empty_placeholder.parent_node
-    index_of_outer_branchingnode = outer_branchingnode.parent_placeholder.nodes.index(outer_branchingnode)
-    outer_branchingnode.parent_placeholder.nodes[index_of_outer_branchingnode : index_of_outer_branchingnode + 1] = non_empty_placeholder.nodes
-    for node in non_empty_placeholder.nodes:
-        node.parent_placeholder = outer_branchingnode.parent_placeholder
-    k.current = non_empty_placeholder.nodes[-1]

@@ -4,6 +4,10 @@
 
 - Renamed `delete_current` to `delete_left`.
 
+### Added
+
+- `delete_right`.
+
 ## [0.1.1] 2023-01-21
 
 - Update readme on PyPi.

@@ -25,6 +25,7 @@ from src.keyboard_engine.functions.selection.leave_selection_mode import leave_s
 from src.keyboard_engine.functions.insertion.insert_with_encapsulate_selection import insert_with_encapsulate_selection
 from src.keyboard_engine.functions.insertion.insert_with_encapsulate_selection_and_previous import insert_with_encapsulate_selection_and_previous
 from src.keyboard_engine.functions.deletion.delete_left import delete_left
+from src.keyboard_engine.functions.deletion.delete_right import delete_right
 from src.keyboard_engine.functions.deletion.delete_selection import delete_selection
 from src.keyboard_engine.functions.selection.select_left import select_left
 from src.keyboard_engine.functions.selection.select_right import select_right
