@@ -1,4 +1,4 @@
-from src import DescendingBranchingNode, DigitNode, KeyboardMemory, delete_current, get_edit_mode_latex, insert, insert_with_encapsulate_current, move_down, move_left, move_right, move_up
+from src import DescendingBranchingNode, DigitNode, KeyboardMemory, delete_left, get_edit_mode_latex, insert, insert_with_encapsulate_current, move_down, move_left, move_right, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
 
 
@@ -44,7 +44,7 @@ def test_delete_empty_frac_from_numerator():
     k = KeyboardMemory()
     insert(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     assert r'\frac{▦}{⬚}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
 
@@ -53,7 +53,7 @@ def test_delete_empty_frac_from_denominator():
     insert(k, DescendingBranchingNode(r'\frac{', '}{', '}'))
     move_down(k)
     assert r'\frac{⬚}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
 
@@ -63,7 +63,7 @@ def test_delete_empty_frac_from_the_right():
     move_down(k)
     move_right(k)
     assert r'\frac{⬚}{⬚}▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
 
@@ -77,9 +77,9 @@ def test_deleting_frac_from_denominator_releases_non_empty_numerator():
     move_right(k)
     assert r'\frac{12}{3}▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
-    delete_current(k)
+    delete_left(k)
     assert r'\frac{12}{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert '12▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
 

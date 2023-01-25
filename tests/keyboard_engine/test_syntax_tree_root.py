@@ -1,4 +1,4 @@
-from src import DescendingBranchingNode, DigitNode, KeyboardMemory, Placeholder, delete_current, get_edit_mode_latex, insert, move_down, move_left, move_right, move_up
+from src import DescendingBranchingNode, DigitNode, KeyboardMemory, Placeholder, delete_left, get_edit_mode_latex, insert, move_down, move_left, move_right, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
 
 
@@ -16,7 +16,7 @@ def test_is_a_Placeholder():
 
 def test_cannot_be_deleted():
     k = KeyboardMemory()
-    delete_current(k)
+    delete_left(k)
     assert k.current is not None
     assert isinstance(k.current, Placeholder)
 

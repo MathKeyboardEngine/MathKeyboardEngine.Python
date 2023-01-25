@@ -1,6 +1,6 @@
 import pytest
 
-from src import DigitNode, KeyboardMemory, MatrixNode, Placeholder, delete_current, get_edit_mode_latex, insert, move_down, move_left, move_right, move_up
+from src import DigitNode, KeyboardMemory, MatrixNode, Placeholder, delete_left, get_edit_mode_latex, insert, move_down, move_left, move_right, move_up
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
 
 
@@ -82,15 +82,15 @@ def test_pmatrix_2by2_delete_content():
     move_right(k)
     insert(k, DigitNode('4'))
     assert r'\begin{pmatrix}1 & 2 \\ 3 & 4▦\end{pmatrix}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert r'\begin{pmatrix}1 & 2 \\ 3 & ▦\end{pmatrix}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert r'\begin{pmatrix}1 & 2 \\ ▦ & ⬚\end{pmatrix}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert r'\begin{pmatrix}1 & ▦ \\ ⬚ & ⬚\end{pmatrix}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert r'\begin{pmatrix}▦ & ⬚ \\ ⬚ & ⬚\end{pmatrix}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
 

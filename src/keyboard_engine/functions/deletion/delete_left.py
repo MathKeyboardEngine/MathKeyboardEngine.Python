@@ -8,7 +8,7 @@ from src.keyboard_engine.functions._helpers.encapsulate_all_parts_of_number_with
 from src.keyboard_engine.functions._helpers.get_first_non_empty_on_left_of import get_first_non_empty_on_left_of
 
 
-def delete_current(k: KeyboardMemory) -> None:
+def delete_left(k: KeyboardMemory) -> None:
     if isinstance(k.current, Placeholder):
         if k.current.parent_node is None or len(k.current.nodes) > 0:
             return
@@ -45,7 +45,7 @@ def delete_current(k: KeyboardMemory) -> None:
             delete_outer_branching_node_but_not_its_contents(k, k.current.placeholders[0])
         elif isinstance(k.current, BranchingNode) and any(len(ph.nodes) > 0 for ph in k.current.placeholders):
             k.current = [node for ph in k.current.placeholders for node in ph.nodes][-1]
-            delete_current(k)
+            delete_left(k)
         else:
             previous_node: Union[TreeNode, None] = first_before_or_none(k.current.parent_placeholder.nodes, k.current)
             k.current.parent_placeholder.nodes.remove(k.current)

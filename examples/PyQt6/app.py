@@ -43,7 +43,7 @@ class ExampleWindow(QMainWindow):
         self.multiplication_sign_setting.clicked.connect(self.multiplication_sign_setting_clicked)
         self.gridLayout.addWidget(self.multiplication_sign_setting, 1, 13)
 
-        self.register_key('flame', 2, 2, delete_current, delete_selection)
+        self.register_key('flame', 2, 2, delete_left, delete_selection)
         self.register_key('uparrow', 2, 1, move_up)
         self.register_key('leftarrow', 3, 0, move_left, select_left, should_leave_selection_mode=False)
         self.register_key('downarrow', 3, 1, move_down)

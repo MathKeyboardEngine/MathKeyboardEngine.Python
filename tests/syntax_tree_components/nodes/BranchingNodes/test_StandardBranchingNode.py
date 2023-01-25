@@ -1,4 +1,4 @@
-from src import DigitNode, KeyboardMemory, StandardBranchingNode, delete_current, get_edit_mode_latex, insert, move_left, move_right
+from src import DigitNode, KeyboardMemory, StandardBranchingNode, delete_left, get_edit_mode_latex, insert, move_left, move_right
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
 
 
@@ -37,5 +37,5 @@ def test_sqrt_del():
     k = KeyboardMemory()
     insert(k, StandardBranchingNode(r'\sqrt{', '}'))
     assert r'\sqrt{▦}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
-    delete_current(k)
+    delete_left(k)
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
