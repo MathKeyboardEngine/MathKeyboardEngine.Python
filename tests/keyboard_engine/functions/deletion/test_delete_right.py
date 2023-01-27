@@ -293,6 +293,18 @@ def test_can_delete_a_matrixnode_with_full_content():
     assert '▦' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
 
 
+def test_does_not_delete_a_MatrixNode_from_an_empty_Placeholder_if_a_previous_Placeholder_is_not_empty():
+    # Arrange
+    k = KeyboardMemory()
+    insert(k, MatrixNode('pmatrix', 2, 2))
+    insert(k, DigitNode('1'))
+    move_right(k)
+    assert r'\begin{pmatrix}1 & ▦ \\ ⬚ & ⬚\end{pmatrix}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+    # Act & assert
+    delete_right(k)
+    assert r'\begin{pmatrix}1 & ▦ \\ ⬚ & ⬚\end{pmatrix}' == get_edit_mode_latex(k, UnitTestLatexConfiguration())
+
+
 def test_lets_the_cursor_pull_exponents_and_subscripts_towards_itself():
     # Arrange
     k = KeyboardMemory()
