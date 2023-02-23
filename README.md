@@ -90,6 +90,22 @@ Follow these steps to set up (and verify) a development environment for this rep
 1. If you're interested the release steps, see [_disthelper/release_steps.txt](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/_disthelper/release_steps.txt).
 
 
+## License
+
+The MathKeyboardEngine repositories use the most permissive licensing available. The "BSD Zero Clause License" ([0BSD](https://choosealicense.com/licenses/0bsd/)) allows for<br/>
+commercial + non-commercial use, closed + open source, with + without modifications, etc. and [is equivalent](https://github.com/github/choosealicense.com/issues/805) to licenses like:
+
+- "MIT No Attribution License" ([MIT-0](https://choosealicense.com/licenses/mit-0//)).
+- "The Unlicense" ([Unlicense](https://choosealicense.com/licenses/unlicense/)).
+- "CC0" ([CC0](https://choosealicense.com/licenses/cc0/)).
+
+The "BSD Zero Clause License" ([0BSD](https://choosealicense.com/licenses/0bsd/)) does not have the condition
+
+> (...), provided that the above copyright notice and this permission notice appear in all copies.
+
+which is part of the "MIT License" ([MIT](https://choosealicense.com/licenses/mit/)) and its shorter equivalent "ISC License" ([ISC](https://choosealicense.com/licenses/isc/)). Apart from that they are all equivalent.
+
+
 ## Ask or contribute
 
 - [ask questions](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/discussions) about anything that is not clear or when you'd like help.
