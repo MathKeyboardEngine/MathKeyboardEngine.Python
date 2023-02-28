@@ -9,6 +9,8 @@ Also available:
 
 - [MathKeyboardEngine for C#](https://github.com/MathKeyboardEngine/MathKeyboardEngine.CSharp).
 - [MathKeyboardEngine for JavaScript](https://github.com/MathKeyboardEngine/MathKeyboardEngine).
+- [MathKeyboardEngine for Swift](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift#readme).
+- [MathKeyboardEngine for other languages](https://github.com/MathKeyboardEngine).
 
 #### An execution timeline
 
