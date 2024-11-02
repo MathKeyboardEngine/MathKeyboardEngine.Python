@@ -74,7 +74,7 @@ latexconfiguration = mke.LatexConfiguration()
 
 ## Documentation
 
-Visit the [documentation](https://mathkeyboardengine.github.io/docs/python/0.2/) and the (latest version of the)* [examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) for more implementation details.
+Visit the [documentation](https://mathkeyboardengine.github.io/docs/python/1.0/) and the (latest version of the)* [examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/examples) for more implementation details.
 
 \* If you use a version tag in the url like this: https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/v0.1.1, you can see the git repository as it was for that version. That may not be needed if the [changelog](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/CHANGELOG.md) doesn't note any important changes.
 

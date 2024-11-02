@@ -31,3 +31,5 @@ from src.keyboard_engine.functions.selection.select_left import select_left
 from src.keyboard_engine.functions.selection.select_right import select_right
 from src.keyboard_engine.functions.selection.in_selection_mode import in_selection_mode
 from src.keyboard_engine.functions.selection.enter_selection_mode import enter_selection_mode
+from src.latex_parser.parse_latex import parse_latex
+from src.latex_parser.LatexParserConfiguration import LatexParserConfiguration

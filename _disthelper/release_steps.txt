@@ -16,24 +16,24 @@ py -m blue . --line-length 400
 > verify that the test coverage is 100%, that the tests of the flatpacked version of mathkeyboardengine pass all versions of Python:
 py -m nox
 
-> in setup.py, increment the version="0.1.0-alpha.?", then run:
+> in setup.py, increment the version="1.0.0-beta.?", then run:
 py setup.py sdist bdist_wheel
 
 > upload to PyPi:
 py -m twine check dist/*
 py -m twine upload dist/*
 
-> create a git tag of the format 'v.0.1.1' / 'v0.1.1-alpha.2' via VS Code's history tab and push it:
+> create a git tag of the format 'v1.0.0' / 'v1.0.0-beta.2' via VS Code's history tab and push it:
 git push origin --tags
 
 
 == Manually testing the release ==
 > create a folder 'Test' and open it in VS Code, then run:
-py -m pip install mathkeyboardengine==0.1.0a12 (Change the version number to the latest version. Running this command twice seems necessary sometimes.)
+py -m pip install mathkeyboardengine==1.0.0b (Change the version number to the latest version. Running this command twice seems necessary sometimes.)
 
 > create a new file `main.py` with the following content:
 ```
-from mathkeyboardengine import LatexConfiguration, Placeholder, TreeNode, KeyboardMemory, get_edit_mode_latex, get_view_mode_latex, LeafNode, BranchingNode, StandardLeafNode, PartOfNumberWithDigits, DecimalSeparatorNode, DigitNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, RoundBracketsNode, MatrixNode, move_right, move_down, move_left, move_up, insert, insert_with_encapsulate_current, leave_selection_mode, insert_with_encapsulate_selection, insert_with_encapsulate_selection_and_previous, delete_left, delete_right, delete_selection, select_left, select_right, in_selection_mode, enter_selection_mode
+from mathkeyboardengine import LatexConfiguration, Placeholder, TreeNode, KeyboardMemory, get_edit_mode_latex, get_view_mode_latex, LeafNode, BranchingNode, StandardLeafNode, PartOfNumberWithDigits, DecimalSeparatorNode, DigitNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, RoundBracketsNode, MatrixNode, move_right, move_down, move_left, move_up, insert, insert_with_encapsulate_current, leave_selection_mode, insert_with_encapsulate_selection, insert_with_encapsulate_selection_and_previous, delete_left, delete_right, delete_selection, select_left, select_right, in_selection_mode, enter_selection_mode, parse_latex, LatexParserConfiguration
 
 k = KeyboardMemory()
 latexconfiguration = LatexConfiguration()
