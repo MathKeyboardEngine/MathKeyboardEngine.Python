@@ -27,7 +27,6 @@ setup(
     license='0BSD',
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Public Domain',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',

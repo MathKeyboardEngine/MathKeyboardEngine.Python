@@ -19,6 +19,10 @@ py -m nox
 > in setup.py, increment the version="1.0.0-beta.?", then run:
 py setup.py sdist bdist_wheel
 
+
+> login and create an API token on https://pypi.org/manage/account/token/. 
+> In the upload step, see next, use Edit > Paste (and NOT Ctrl + V) in VS Code on Windows.
+
 > upload to PyPi:
 py -m twine check dist/*
 py -m twine upload dist/*
