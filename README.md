@@ -84,11 +84,11 @@ Visit the [documentation](https://mathkeyboardengine.github.io/docs/python/1.0/)
 Follow these steps to set up (and verify) a development environment for this repository:
 
 1. Install the latest version of Python via [https://www.python.org/downloads](https://www.python.org/downloads/). The download includes `pip`.
-1. Open the Terminal in VS Code and run<br/>`py -m pip install --upgrade pytest`.
+1. Open the Terminal in VS Code and run<br/>`py -m pip install pytest==7.4.4`.
 1. Run all tests via<br/>`py -m pytest tests/`.
-1. See code coverage:<br/>`py -m pip install --upgrade pytest-cov`<br/>`py -m pytest tests/ --cov=src --cov-report term-missing`.
+1. See code coverage:<br/>`py -m pip install pytest-cov==5.0.0`<br/>`py -m pytest tests/ --cov=src --cov-report term-missing`.
 1. This repository has been developed in a folder structure that helps understanding it. The released package however has a "flat" structure, so that all imports can be done from a single namespace. This is done via [_disthelper/flatpack.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/_disthelper/flatpack.py) (developed especially for this repository). Files from the [src](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/tree/main/src) folder are recursively copied to a new folder 'mathkeyboardengine' and import statements are automatically updated. It also produces a new version of the tests folder. It is called in [setup.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/setup.py) and [noxfile.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/noxfile.py).
-1. Run all tests for the flatpacked mathkeyboardengine for multiple versions of python :<br/>`py -m pip install --upgrade nox`<br/>`py -m nox` (this uses [noxfile.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/noxfile.py) from the root of the repository).
+1. Run all tests for the flatpacked mathkeyboardengine for multiple versions of python :<br/>`py -m pip install nox==2023.4.22`<br/>`py -m nox` (this uses [noxfile.py](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/noxfile.py) from the root of the repository).
 1. If you're interested the release steps, see [_disthelper/release_steps.txt](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python/blob/main/_disthelper/release_steps.txt).
 
 

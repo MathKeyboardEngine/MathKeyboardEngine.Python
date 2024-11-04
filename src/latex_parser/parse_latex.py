@@ -6,7 +6,7 @@ from src.latex_parser._helpers.get_bracket_pair_content import get_bracket_pair_
 from src.latex_parser.LatexParserConfiguration import LatexParserConfiguration
 from src import KeyboardMemory, DecimalSeparatorNode, DigitNode, MatrixNode, RoundBracketsNode, StandardLeafNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, insert, insert_with_encapsulate_current, move_right
 
-def parse_latex(latex : Union[str | None], latexparserconfiguration : Union[LatexParserConfiguration | None] = None) -> KeyboardMemory:
+def parse_latex(latex : Union[str, None], latexparserconfiguration : Union[LatexParserConfiguration, None] = None) -> KeyboardMemory:
         if latexparserconfiguration is None:
             latexparserconfiguration = LatexParserConfiguration()
         if latex is None:
@@ -20,9 +20,6 @@ def parse_latex(latex : Union[str | None], latexparserconfiguration : Union[Late
 
             decimal_separator_match = first_or_none(lambda pattern: x.startswith(pattern), latexparserconfiguration.decimal_separator_matchers)
             if decimal_separator_match is not None:
-                print('!!!!!!!TEST!!!!!!!')
-                print(decimal_separator_match)
-                print('!!!!!!!!!TEST!!!!!')
                 insert(k, DecimalSeparatorNode(coalesce(latexparserconfiguration.preferred_decimal_separator, decimal_separator_match)))
                 x = x[len(decimal_separator_match):]
                 continue

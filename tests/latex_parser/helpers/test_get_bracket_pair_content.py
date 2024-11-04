@@ -5,7 +5,7 @@ def test_gets_bracket_pair_content():
       (r'\frac{', '}', r'\frac{1}{2}', '1', '{2}'),
       (r'\frac{', '}', r'\frac{123}{456}', '123', '{456}'),
       (r'\frac{', '}', r'\frac{\frac{1}{1-x}}{x}', r'\frac{1}{1-x}', '{x}'),
-      (r'\frac{', '}', r'\frac{TEST\right}and\}FORFUN}{x}', r'TEST\right}and\}FORFUN', '{x}'),
+      (r'\frac{', '}', r'\frac{TEST\right}and\}\}\{}{x}', r'TEST\right}and\}\}\{', '{x}'),
       (r'\frac{', '}', r'\frac{1}{2}3', '1', '{2}3')
     ]:
       opening = testinput[0]
