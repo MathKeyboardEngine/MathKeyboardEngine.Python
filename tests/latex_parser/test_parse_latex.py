@@ -10,50 +10,50 @@ def test_can_handle_empty_and_null_input():
         k = parse_latex(testinput)
         # Assert
         assert '⬚' == get_view_mode_latex(k, UnitTestLatexConfiguration())
-    
+
 
 def test_parses_exactly():
     for testinput in [
-       r'1',
-       r'123',
-       r'1.2',
-       r'x',
-       r'xyz',
-       r'2x',
-       r'\frac{1}{2}',
-       r'3\frac{1}{2}',
-       r'\frac{1}{2}3',
-       r'\frac{1+x}{2-y}',
-       r'\frac{7}{\frac{8}{9}}',
-       r'\binom{10}{2}',
-       r'\binom{\frac{4}{2}}{1}',
-       r'\frac{\frac{\binom{10}{x}}{x-1}}{\frac{2a-x}{a}}',
-       r'2^x',
-       r'2^{x}',
-       r'2^{x+1}',
-       r'2^{\frac{1}{2}}',
-       r'1+2^{\frac{3}{4}}+5',
-       r'a_{1}',
-       r'a_1',
-       r'a_{n-1}',
-       r'a_{n-2}a_{n-1}a_{n}',
-       r'x^\frac{1}{2}',
-       r'x^{\frac{1}{2}}',
-       r'x^\frac{p^2}{2}',
-       r'x^\frac{p^{2}}{2}',
-       r'x^\pi',
-       r'x^{\pi}',
-       r'a_1\times a_2',
-       r'a_{1}\times a_{2}',
-       r'\sqrt{2}',
-       r'a\sqrt{2}b',
-       r'\sin\pi',
-       r'\sin{\pi}',
-       r'\|',
-       r'\sin6',
-       r'\sin{6}',
-       r'\sin(6)',
-       r'\sin\left(6\right)',
+        r'1',
+        r'123',
+        r'1.2',
+        r'x',
+        r'xyz',
+        r'2x',
+        r'\frac{1}{2}',
+        r'3\frac{1}{2}',
+        r'\frac{1}{2}3',
+        r'\frac{1+x}{2-y}',
+        r'\frac{7}{\frac{8}{9}}',
+        r'\binom{10}{2}',
+        r'\binom{\frac{4}{2}}{1}',
+        r'\frac{\frac{\binom{10}{x}}{x-1}}{\frac{2a-x}{a}}',
+        r'2^x',
+        r'2^{x}',
+        r'2^{x+1}',
+        r'2^{\frac{1}{2}}',
+        r'1+2^{\frac{3}{4}}+5',
+        r'a_{1}',
+        r'a_1',
+        r'a_{n-1}',
+        r'a_{n-2}a_{n-1}a_{n}',
+        r'x^\frac{1}{2}',
+        r'x^{\frac{1}{2}}',
+        r'x^\frac{p^2}{2}',
+        r'x^\frac{p^{2}}{2}',
+        r'x^\pi',
+        r'x^{\pi}',
+        r'a_1\times a_2',
+        r'a_{1}\times a_{2}',
+        r'\sqrt{2}',
+        r'a\sqrt{2}b',
+        r'\sin\pi',
+        r'\sin{\pi}',
+        r'\|',
+        r'\sin6',
+        r'\sin{6}',
+        r'\sin(6)',
+        r'\sin\left(6\right)',
     ]:
         # Act
         k = parse_latex(testinput)
@@ -91,21 +91,7 @@ def test_throws_on_missing_closing_bracket():
 
 
 def test_expected_standardLeafNodes():
-    for testinput in [
-            r'a',
-            r'\|',
-            r'\pi',
-            r'\left{',
-            r'\left\{',
-            r'\right}',
-            r'\right\}',
-            r'\right|',
-            r'\right\|',
-            r'\right]',
-            r'\right\]',
-            r'\left(',
-            r'\right)'
-            ]:
+    for testinput in [r'a', r'\|', r'\pi', r'\left{', r'\left\{', r'\right}', r'\right\}', r'\right|', r'\right\|', r'\right]', r'\right\]', r'\left(', r'\right)']:
         my_parser_config = LatexParserConfiguration()
         my_parser_config.prefer_roundbracketsnode = False
         # Act
@@ -116,7 +102,7 @@ def test_expected_standardLeafNodes():
         node = nodes[0]
         assert isinstance(node, StandardLeafNode)
         assert testinput == get_view_mode_latex(k, UnitTestLatexConfiguration())
-    
+
 
 def test_sinus_and_argument_are_separate_LeafNodes():
     for testinput in [r'\sin6', r'\sin 6']:
@@ -145,7 +131,7 @@ def test_can_understand_sin_as_a_StandardBranchingNode():
     inner_node = inner_nodes[0]
     assert isinstance(inner_node, DigitNode)
     assert latex == get_view_mode_latex(k, UnitTestLatexConfiguration())
-    
+
 
 def test_it_understands_several_decimal_separator_symbols_by_default():
     for separator in ['.', '{,}']:
@@ -168,7 +154,7 @@ def test_it_allows_modifying_the_decimal_separator_even_after_parsing():
     preferredDecimalSeparator = '{,}'
     myParserConfig = LatexParserConfiguration()
     myParserConfig.preferred_decimal_separator = lambda: preferredDecimalSeparator
-    
+
     # Act 1
     k = parse_latex('1.2', myParserConfig)
     # Assert 1
@@ -213,7 +199,7 @@ def test_it_understands_complex_latex():
     # Act
     myParserConfig = LatexParserConfiguration()
     myParserConfig.prefer_roundbracketsnode = False
-    
+
     k = parse_latex(latex, myParserConfig)
     # Assert
     nodes = k.syntax_tree_root.nodes
@@ -225,7 +211,7 @@ def test_it_understands_complex_latex():
     assert r'\left[' == get_view_mode_latex(nodes[1], UnitTestLatexConfiguration())
 
     assert isinstance(nodes[2], StandardLeafNode)
-    assert r'\int'== get_view_mode_latex(nodes[2], UnitTestLatexConfiguration())
+    assert r'\int' == get_view_mode_latex(nodes[2], UnitTestLatexConfiguration())
 
     assert isinstance(nodes[3], AscendingBranchingNode)
     assert 'd^{4}' == get_view_mode_latex(nodes[3], UnitTestLatexConfiguration())
@@ -369,7 +355,7 @@ def test_latexparserconfiguration_prefer_roundbracketsnode():
         roundBracketsNode = node
         assert latex == get_view_mode_latex(k, UnitTestLatexConfiguration())
         assert 3 == len(roundBracketsNode.placeholders[0].nodes)
-    
+
 
 def test_it_parses_lim_correctly():
     # Arrange
