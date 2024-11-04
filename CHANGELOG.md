@@ -1,4 +1,4 @@
-## [1.0.0-beta] 2024-11
+## [1.0.0] 2024-11-04
 
 - Add `parse_latex`.
 - Drop support for python 2.7, 3.6 and 3.7. (Now only 3.8 and up.)
