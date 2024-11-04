@@ -1,5 +1,6 @@
 ﻿from src.latex_parser._helpers.get_bracket_pair_content import get_bracket_pair_content
 
+
 def test_gets_bracket_pair_content():
     for testinput in [
       (r'\frac{', '}', r'\frac{1}{2}', '1', '{2}'),

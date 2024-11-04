@@ -1,7 +1,8 @@
 ﻿import pytest
 
-from src import get_view_mode_latex, parse_latex, LatexParserConfiguration, DigitNode, DescendingBranchingNode, MatrixNode, RoundBracketsNode, insert, insert_with_encapsulate_current, StandardLeafNode, AscendingBranchingNode, BranchingNode, StandardBranchingNode, DecimalSeparatorNode
+from src import AscendingBranchingNode, BranchingNode, DecimalSeparatorNode, DescendingBranchingNode, DigitNode, LatexParserConfiguration, MatrixNode, RoundBracketsNode, StandardBranchingNode, StandardLeafNode, get_view_mode_latex, insert, insert_with_encapsulate_current, parse_latex
 from tests._testhelpers.UnitTestLatexConfiguration import UnitTestLatexConfiguration
+
 
 def test_can_handle_empty_and_null_input():
     for testinput in ['', ' ', None]:

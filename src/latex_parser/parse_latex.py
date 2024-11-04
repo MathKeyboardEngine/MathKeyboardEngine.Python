@@ -1,10 +1,11 @@
 ﻿from typing import List, Union
 
+from src import AscendingBranchingNode, DecimalSeparatorNode, DescendingBranchingNode, DigitNode, KeyboardMemory, MatrixNode, RoundBracketsNode, StandardBranchingNode, StandardLeafNode, insert, insert_with_encapsulate_current, move_right
 from src._helpers.coalesce import coalesce
 from src._helpers.first_or_none import first_or_none
 from src.latex_parser._helpers.get_bracket_pair_content import get_bracket_pair_content
 from src.latex_parser.LatexParserConfiguration import LatexParserConfiguration
-from src import KeyboardMemory, DecimalSeparatorNode, DigitNode, MatrixNode, RoundBracketsNode, StandardLeafNode, StandardBranchingNode, AscendingBranchingNode, DescendingBranchingNode, insert, insert_with_encapsulate_current, move_right
+
 
 def parse_latex(latex : Union[str, None], latexparserconfiguration : Union[LatexParserConfiguration, None] = None) -> KeyboardMemory:
         if latexparserconfiguration is None:

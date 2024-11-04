@@ -1,5 +1,6 @@
 ﻿from typing import Callable, List, Union
 
+
 class LatexParserConfiguration:
     def __init__(self) -> None:
         self.additional_digits: Union[List[str], None] = None

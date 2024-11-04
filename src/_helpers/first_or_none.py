@@ -1,4 +1,4 @@
-from typing import List, TypeVar, Union, Callable
+from typing import Callable, List, TypeVar, Union
 
 T = TypeVar('T')
 
